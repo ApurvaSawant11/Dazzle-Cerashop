@@ -18,11 +18,11 @@ const Header = () => {
         <div className="navbar-section">
           <i className="fas fa-bars fa-lg primary-text myhamburger"></i>
 
-          <a href="/index.html" className="navbar-logo no-underline">
+          <Link to="/" className="navbar-logo no-underline">
             <img className="logo-img" src={logo} alt="dazzle" />
             <span className="primary-text">Cera</span>
             <span className="secondary-text">Shop</span>
-          </a>
+          </Link>
 
           <Link to="/" className="navbar-link ml-2">
             Home
