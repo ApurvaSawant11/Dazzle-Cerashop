@@ -3,13 +3,14 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import { Home } from "../src/pages"
-import { Footer } from "./components";
+import { Header, Footer } from "./components";
 
 import Mockman from "mockman-js";
 
-export default function App() {
+const App = () => {
   return (
    <>
+   <Header />
    <Routes>
       <Route path="/" element={ <Home /> } />
       <Route path="/mockman" element={<Mockman />} />
@@ -18,4 +19,6 @@ export default function App() {
      
    </>
    );
-  }
+}
+
+export default App;
