@@ -5,6 +5,7 @@ import { logo } from "../../assets";
 
 const Header = () => {
   const [showInput, setShowInput] = useState(false);
+  const [showNavDrawer, setShowNavDrawer] = useState(false);
 
   return (
     <>
@@ -16,7 +17,10 @@ const Header = () => {
       </div>
       <header className="header flex-row wrap">
         <div className="navbar-section">
-          <i className="fas fa-bars fa-lg primary-text myhamburger"></i>
+          <i
+            className="fas fa-bars fa-lg primary-text myhamburger"
+            onClick={() => setShowNavDrawer(!showNavDrawer)}
+          ></i>
 
           <Link to="/" className="navbar-logo no-underline">
             <img className="logo-img" src={logo} alt="dazzle" />
@@ -81,6 +85,51 @@ const Header = () => {
           ></i>
         </form>
       )}
+
+      <nav
+        className={
+          showNavDrawer ? "sub-navigation nav-drawer" : "sub-navigation"
+        }
+      >
+        <div className="flex-row-center drawer-header">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+          <Link to="/" className="nav-link">
+            Shop All
+          </Link>
+        </div>
+        <Link to="/" className="nav-link">
+          Decor
+        </Link>
+        <Link to="/" className="nav-link">
+          Dining
+        </Link>
+        <Link to="/" className="nav-link">
+          Kitchen
+        </Link>
+        <Link to="/" className="nav-link">
+          Gifts
+        </Link>
+        <Link to="/" className="nav-link">
+          Brands
+        </Link>
+        <div className="drawer-footer border-top-1">
+          <div className="navbar-icon p-1 pl-0p5">
+            <Link className="navbar-icon-link" to="/login">
+              <i className="fas fa-user-alt"></i>
+              <span className="navbar-icon-text">Login</span>
+            </Link>
+          </div>
+
+          <div className="navbar-icon p-1 pl-0p5">
+            <Link className="navbar-icon-link" to="/wishlist">
+              <i className="fas fa-heart"></i>
+              <span className="navbar-icon-text">Wishlist</span>
+            </Link>
+          </div>
+        </div>
+      </nav>
     </>
   );
 };

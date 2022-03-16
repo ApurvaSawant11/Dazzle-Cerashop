@@ -15,6 +15,133 @@
     letter-spacing: 1px;
 }
 
-.navbar-searchbar {
+.display-block, .navbar-searchbar {
     display: block;
+}
+
+.myhamburger, .drawer-header, .drawer-footer {
+    display: none;
+}
+
+
+/* || Media Queries */
+
+@media screen and (max-width: 1100px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    }
+
+    .card-vertical {
+        width: 12rem;
+    }
+
+    .card-img-vertical,
+    .overlay {
+        height: 12rem;
+    }
+
+    .card-vertical .title,
+    .card-button {
+        font-size: 0.8rem;
+    }
+
+    .card-button {
+        padding: 0.5rem;
+    }
+
+    .product-section {
+        gap: 1.5rem;
+    }
+
+    .product-form {
+        width: 20rem;
+    }
+}
+
+@media screen and (max-width: 840px) {
+
+    .product-section img,
+    .product-form {
+        padding: 0 3rem;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    .myhamburger {
+        display: block;
+    }
+
+    .drawer-header {
+        display: flex;
+    }
+
+    .sub-navigation {
+        display: none;
+    }
+
+    .nav-drawer {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 0.5rem 2rem;
+    }
+
+    footer {
+        font-size: small;
+        padding: 0.5rem;
+    }
+
+    footer h6 {
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .drawer-footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .sub-header {
+        font-size: small;
+    }
+
+    .card-vertical {
+        width: 10rem;
+    }
+
+    .card-img-vertical,
+    .overlay {
+        height: 10rem;
+    }
+
+    .card-vertical .title,
+    .card-button {
+        font-size: 0.8rem;
+    }
+
+    .card-button {
+        padding: 0.5rem;
+    }
+
+    .product-section img,
+    .product-form {
+        padding: 0 1.5rem;
+    }
+
+    footer {
+        padding: 0;
+    }
 }

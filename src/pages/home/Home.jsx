@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { Carousel } from "../../components/carousel/Carousel";
 
 const Home = () => {
-  return <main></main>;
+  return (
+    <main>
+      <Carousel />
+    </main>
+  );
 };
 
 export { Home };
