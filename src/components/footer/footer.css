@@ -1,0 +1,21 @@
+footer {
+    justify-content: space-around;
+    margin-top: 4rem;
+}
+
+.footer-logo {
+    align-self: center
+}
+
+.links {
+    list-style: none;
+}
+
+.links>li {
+    padding: 4px 0;
+}
+
+.link {
+    color: var(--light-black);
+    text-decoration: none;
+}
