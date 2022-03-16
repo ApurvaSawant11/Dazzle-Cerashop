@@ -1,0 +1,31 @@
+.sub-header {
+    background: var(--primary);
+    color: var(--white-color);
+    padding: 3px;
+}
+
+header {
+    border-bottom: 2px solid var(--light-gray);
+    padding: 1rem 2rem;
+    height: 5rem;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.search-input {
+    border-radius: 5px;
+    border: unset;
+    font-size: 1rem;
+    padding: 0.5rem;
+    padding-left: 4rem;
+    width: 100%;
+    outline: none;
+}
+
+.icon-badge {
+    top: -0.7rem;
+}
