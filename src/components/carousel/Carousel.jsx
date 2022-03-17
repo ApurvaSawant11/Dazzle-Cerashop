@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { CarouselData } from "./carousel.data";
+import { CarouselData } from "../../data/carousel.data";
 
 const Carousel = () => {
   const [current, setCurrent] = useState(0);

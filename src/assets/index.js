@@ -1,1 +1,17 @@
 export { default as logo} from "../assets/logo.svg"
+
+export { default as donutPlate} from "./images/black-donut-plate.jpg"
+export { default as blueCup} from "./images/blue-cup-black-bg.jpg"
+export { default as fancyBowls} from "./images/fancy-bowls.jpg"
+export { default as fancyCup} from "./images/fancy-cup.jpg"
+export { default as gifts} from "./images/gifts.jpg"
+export { default as jugPlanter} from "./images/jug-planter.jpg"
+export { default as authImage} from "./images/login-image.JPG"
+export { default as pinkPlanters} from "./images/pink-planters.jpg"
+export { default as pots} from "./images/pots.jpg"
+export { default as whiteBrownPlanter} from "./images/white-brown-planter.jpg"
+export { default as whiteGoldPlate} from "./images/white-plate-gold-border.jpg"
+
+export { default as comboSet2} from "./images/combo-set-2.jpg";
+export { default as comboSet3} from "./images/combo-set-3.jpg";
+export { default as comboSet4} from "./images/combo-set-4.jpg";

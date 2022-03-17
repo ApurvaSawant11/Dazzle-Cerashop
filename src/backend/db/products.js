@@ -1,5 +1,7 @@
 import { v4 as uuid } from "uuid";
 
+import { comboSet2, comboSet3, comboSet4, fancyBowls } from "../../assets";
+
 /**
  * Product Database can be added here.
  * You can add products of your wish with different attributes
@@ -8,23 +10,70 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
-    price: "5000",
-    categoryName: "non-fiction",
+    title: "Micheilin Set of 7 Plates",
+    price: {
+      discounted: "499",
+      original: "999"
+    },
+    rating:"4",
+    img: {
+      alt:"product alt",
+      url:comboSet3
+    },
+    categoryName: "combo-offers",
+    isWishlisted:true,
+    isInCart: false,
+    isBestseller: true,
   },
   {
     _id: uuid(),
-    title: "You are Winner",
-    author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "horror",
+    title: "Valiant Set of 6 Plates",
+    price: {
+      discounted: "499",
+      original: "999"
+    },
+    rating:"4",
+    img: {
+      alt:"product alt",
+      url:comboSet4
+    },
+    categoryName: "combo-offers",
+    isWishlisted:true,
+    isInCart: false,
+    isBestseller: false,
   },
   {
     _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
+    title: "Bolton Planters",
+    price: {
+      discounted: "499",
+      original: "999"
+    },
+    rating:"4",
+    img: {
+      alt:"product alt",
+      url:comboSet2
+    },
+    categoryName: "combo-offers",
+    isWishlisted:false,
+    isInCart: false,
+    isBestseller: true,
+  },
+  {
+    _id: uuid(),
+    title: "Taisia Bowls Set of 3",
+    price: {
+      discounted: "499",
+      original: "999"
+    },
+    rating:"4",
+    img: {
+      alt:"product alt",
+      url:fancyBowls
+    },
+    categoryName: "combo-offers",
+    isWishlisted:false,
+    isInCart: false,
+    isBestseller: false,
   },
 ];
