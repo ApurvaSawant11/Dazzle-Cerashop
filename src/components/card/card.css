@@ -1,0 +1,137 @@
+.card-vertical {
+    align-self: center;
+    justify-self: center;
+    background: var(--white-color);
+}
+
+.card-img-vertical {
+    border-radius: 0;
+}
+
+.card-vertical .card-details {
+    height: 5.5rem;
+}
+
+.title {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+}
+
+.discountedPrice {
+    font-weight: normal;
+    color: var(--discounted-price);
+}
+
+.card-button {
+    color: var(--primary);
+    border-bottom: 2px solid var(--border-color);
+    background: var(--light-gray);
+    border-radius: 0;
+}
+
+.card-button:hover {
+    background: var(--primary);
+    color: var(--white-color);
+}
+
+.card-delete-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ffffff99;
+    border: 1.2px solid #d4d5d9;
+    border-radius: 50%;
+    padding: 6px;
+}
+
+.card-delete-icon:hover {
+    filter: brightness(85%);
+}
+
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    height: 14.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--opacity-50);
+    z-index: 1;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    transition: all 0.2s ease-in;
+  }
+    
+.category-item:hover>.overlay {
+    transform: scaleY(1);
+}
+
+.wishlist-btn {
+    color: var(--dark-gray);
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 1.5rem;
+}
+
+.wishlisted, .wishlist-btn:hover {
+    font-weight: 800;
+    color: var(--danger);
+}
+
+/* || Media Queries */
+
+@media screen and (max-width: 1100px) {
+
+    .card-vertical {
+        width: 12rem;
+    }
+  
+    .card-img-vertical,
+    .overlay {
+        height: 12rem;
+    }
+  
+    .card-vertical .title,
+    .card-button {
+        font-size: 0.8rem;
+    }
+  
+    .card-button {
+        padding: 0.5rem;
+    } 
+}
+  
+@media screen and (max-width: 480px) {
+  
+    .card-vertical {
+        width: 10rem;
+    }
+    
+    .card-img-vertical,
+    .overlay {
+        height: 10rem;
+    }
+    
+    .card-vertical .title,
+    .card-button {
+        font-size: 0.8rem;
+    }
+    
+    .card-button {
+        padding: 0.5rem;
+    }
+}

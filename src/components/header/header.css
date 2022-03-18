@@ -29,3 +29,31 @@ header {
 .icon-badge {
     top: -0.7rem;
 }
+
+header,
+nav {
+    background-color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    width: 100%;
+    z-index: 3;
+}
+
+nav {
+    top: 5rem;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
+}
+
+.nav-link {
+    color: var(--primary);
+    font-size: small;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1rem;
+}
+
+.nav-link:hover {
+    background: var(--light-gray);
+}

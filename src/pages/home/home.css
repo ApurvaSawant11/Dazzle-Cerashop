@@ -1,0 +1,39 @@
+.category {
+  display: flex;
+  justify-content: center;
+}
+  
+.category-item {
+  position: relative;
+}
+  
+.category-header {
+  color: var(--white-color);
+  padding: 5px 7px;
+  position: absolute;
+  margin-top: 10px;
+  font-weight: bold;
+  z-index: 1;
+  text-transform: uppercase;
+  background: var(--opacity-50);
+}
+  
+.category-img {
+  width: 20rem;
+  height: 20rem;
+}
+
+/* ---------------combo offers--------------- */
+  
+@media screen and (min-width: 1280px) {
+  .combo-offers .grid-container {
+    width: 80%;
+  }
+}
+  
+@media screen and (max-width: 420px) {
+  .category {
+    gap: 1rem;
+  }
+}
+
