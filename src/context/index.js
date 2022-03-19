@@ -1,1 +1,1 @@
-export * from './category-context';
+export { useData, DataProvider} from "./data-context"
