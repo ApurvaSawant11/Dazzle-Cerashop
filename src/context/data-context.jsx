@@ -3,41 +3,42 @@ import { initialReducerData, dataReducer } from "../reducer/dataReducer";
 import axios from "axios";
 
 const DataContext = createContext({
-  contextData: initialReducerData,
+  state: initialReducerData,
   dispatch: () => {},
 });
 
 const DataProvider = ({ children }) => {
-  const [contextData, dispatch] = useReducer(dataReducer, initialReducerData);
+  const [state, dispatch] = useReducer(dataReducer, initialReducerData);
 
   useEffect(() => {
     (async () => {
-      dispatch({ type: "LOADING" });
-
       try {
-        const CategoriesResponse = await axios.get("/api/categories");
-
+        const { data: categoriesList } = await axios.get("/api/categories");
         dispatch({
-          type: "SUCCESS_CATEGORIES",
-          payload: CategoriesResponse.data.categories,
+          type: "INITIALIZE_CATEGORIES",
+          payload: categoriesList.categories,
         });
 
-        const ProductsResponse = await axios.get("/api/products");
-
+        const { data: productsList } = await axios.get("/api/products");
         dispatch({
-          type: "SUCCESS_PRODUCTS",
-          payload: ProductsResponse.data.products,
+          type: "INITIALIZE_PRODUCTS",
+          payload: productsList.products,
         });
       } catch (error) {
-        dispatch({
-          type: "ERROR",
-          payload: "Error: Something is Wrong",
-        });
+        console.log(error);
       }
     })();
   }, []);
 
-  const value = { contextData, dispatch };
+  const value = {
+    sortByHighLow: state.sortByHighLow,
+    sortByRating: state.sortByRating,
+    priceRange: state.priceRange,
+    sliderValue: state.sliderValue,
+    categoriesList: state.categoriesList,
+    productsList: state.productsList,
+    dispatch: dispatch,
+  };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };

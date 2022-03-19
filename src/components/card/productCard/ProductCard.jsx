@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ productDetails }) => {
   const {
     title,
-    img: { alt, url },
+    imgURL,
     price: { discounted, original },
     isWishlisted,
     isBestSeller,
@@ -17,8 +17,8 @@ const ProductCard = ({ productDetails }) => {
           <img
             loading="lazy"
             className="card-img-vertical img-responsive"
-            src={url}
-            alt={alt}
+            src={imgURL}
+            alt={title}
           />
 
           <span className="badge-text badge-on-left success px-0p5">
