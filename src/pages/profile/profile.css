@@ -1,0 +1,89 @@
+.aside-buttons {
+    text-transform: capitalize;
+    color: var(--dark-gray);
+    cursor: pointer;
+}
+
+.profile-details tr {
+    height: 2.5rem;
+}
+
+.profile-details td {
+    width: 10rem;
+}
+
+.logout-btn {
+    width: 100%;
+}
+
+.profile-section,
+.address-section .card-horizontal {
+    min-width: 35rem;
+}
+
+.action-buttons,
+.address-title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.edit-btn,
+.remove-btn {
+    width: 50%;
+    text-align: center;
+}
+
+.address-section, .profile-section {
+    display: none;
+}
+
+.address-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+aside input[type="radio"]{
+    display: none;
+}
+
+.display-block{
+    display: block;
+}
+
+.profile-aside input[type=radio]:checked + label {
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+@media screen and (max-width: 740px) {
+    .profile-aside {
+        flex-direction: row;
+        padding: 0;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .address-section {
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .profile-section {
+        min-width: 20rem;
+        padding: 1rem;
+    }
+
+    .address-section .card-horizontal {
+        min-width: 20rem;
+    }
+
+    .address-title>h6 {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+
+    .address-title>button {
+        padding: 0.5rem;
+    }
+}

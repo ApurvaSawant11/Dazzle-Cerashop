@@ -2,10 +2,13 @@ import { React, useState } from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets";
+import { useAuth } from "../../context";
 
 const Header = () => {
   const [showInput, setShowInput] = useState(false);
   const [showNavDrawer, setShowNavDrawer] = useState(false);
+
+  const { token } = useAuth();
 
   return (
     <>
@@ -45,10 +48,20 @@ const Header = () => {
           </div>
 
           <div className="navbar-icon">
-            <Link className="navbar-icon-link flex-column-center" to="/login">
-              <i className="fas fa-user-alt"></i>
-              <span className="navbar-icon-text">Login</span>
-            </Link>
+            {token ? (
+              <Link
+                className="navbar-icon-link flex-column-center"
+                to="/profile"
+              >
+                <i className="fas fa-user-alt"></i>
+                <span className="navbar-icon-text">Profile</span>
+              </Link>
+            ) : (
+              <Link className="navbar-icon-link flex-column-center" to="/login">
+                <i className="fas fa-user-alt"></i>
+                <span className="navbar-icon-text">Login</span>
+              </Link>
+            )}
           </div>
 
           <div className="navbar-icon">
