@@ -1,0 +1,107 @@
+.auth-container {
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    box-shadow: 0px 1px 10px 4px var(--light-gray);
+    width: max-content;
+}
+
+.form-img {
+    position: relative;
+}
+
+.form-img>img {
+    border-radius: 5px 0 0 5px;
+    width: 15rem;
+    height: 100%;
+}
+
+.img-text {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 1.8rem 1.5rem;
+}
+
+.login-form,
+.signup-form {
+    width: 25rem;
+    align-self: center;
+}
+
+.login-form h4,
+.signup-form h4 {
+    display: none;
+}
+
+.form-name {
+    flex-wrap: nowrap;
+}
+
+.input {
+    background: transparent;
+}
+
+.form-btn {
+    width: 100%;
+}
+
+.authbox-container {
+    font-size: small;
+    justify-content: space-between;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+.authbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.forgot-form {
+    width: 28rem;
+}
+
+.button-anchor {
+    background: var(--primary);
+    color: var(--white-color);
+    display: block;
+}
+
+.change-pwd-div {
+    display: none;
+}
+
+@media screen and (max-width: 680px) {
+
+    .login-form h4,
+    .signup-form h4 {
+        display: block;
+    }
+
+    .signup-form {
+        padding-top: 0;
+    }
+
+    .form-img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .auth-container {
+        box-shadow: none;
+        padding: 1rem;
+        margin: 0 auto;
+    }
+
+    .login-form,
+    .signup-form,
+    .forgot-form {
+        width: 20rem;
+        padding: 1rem;
+    }
+}
