@@ -19,11 +19,7 @@ export function Signup() {
   const signUpHandler = () => {
     const { email, password, confirmPwd, firstName, lastName } = formData;
     if (
-      email &&
-      password &&
-      confirmPwd &&
-      firstName &&
-      lastName !== "" &&
+      (email && password && confirmPwd && firstName && lastName) !== " " &&
       password === confirmPwd
     ) {
       (async () => {
