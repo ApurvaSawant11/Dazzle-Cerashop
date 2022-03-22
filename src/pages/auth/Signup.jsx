@@ -18,10 +18,7 @@ export function Signup() {
 
   const signUpHandler = () => {
     const { email, password, confirmPwd, firstName, lastName } = formData;
-    if (
-      (email && password && confirmPwd && firstName && lastName) !== " " &&
-      password === confirmPwd
-    ) {
+    if (password === confirmPwd) {
       (async () => {
         signupUser(email, password, firstName, lastName);
       })();
@@ -29,8 +26,10 @@ export function Signup() {
   };
 
   const fillFormValue = (event, fieldName) => {
+    const regex = "^\\s+$";
     const { value } = event.target;
-    setFormData((form) => ({ ...form, [fieldName]: value }));
+    if (!value.match(regex))
+      setFormData((form) => ({ ...form, [fieldName]: value }));
   };
 
   if (token) {
