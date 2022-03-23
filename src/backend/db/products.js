@@ -18,9 +18,7 @@ export const products = [
     rating:5,
     imgURL:fancyCup,
     categoryName: "Cups",
-    offer:"50%",
-    isWishlisted:true,
-    isInCart: false,
+    offer:"50%",    
     isBestseller: false,
   },
   {
@@ -34,8 +32,6 @@ export const products = [
     imgURL:jugPlanter,
     categoryName: "Planters",
     offer:"70%",
-    isWishlisted:false,
-    isInCart: false,
     isBestseller: false,
   },
   {
@@ -49,8 +45,6 @@ export const products = [
     imgURL:blueCup,
     categoryName: "Cups",
     offer:"70%",
-    isWishlisted:false,
-    isInCart: false,
     isBestseller: true,
   },
   {
@@ -63,9 +57,7 @@ export const products = [
     rating:5,
     imgURL:whiteBrownPlanter,
     categoryName: "Planter",
-    offer:"70%",
-    isWishlisted:true,
-    isInCart: false,
+    offer:"70%",    
     isBestseller: true,
   },
   {
@@ -78,9 +70,7 @@ export const products = [
     rating:3,
     imgURL:whiteGoldPlate,
     categoryName: "Plates",
-    offer:"20%",
-    isWishlisted:true,
-    isInCart: false,
+    offer:"20%",    
     isBestseller: true,
   },
   {
@@ -93,9 +83,7 @@ export const products = [
     rating:4,
     imgURL:donutPlate,
     categoryName: "Planter",
-    offer:"20%",
-    isWishlisted:true,
-    isInCart: false,
+    offer:"20%",    
     isBestseller: true,
   },
   {
@@ -108,9 +96,7 @@ export const products = [
     rating:4,
     imgURL:comboSet3,
     categoryName: "Plates",
-    offer: "combo-offer",
-    isWishlisted:true,
-    isInCart: false,
+    offer: "combo-offer",    
     isBestseller: true,
   },
   {
@@ -123,9 +109,7 @@ export const products = [
     rating:3,
     imgURL:comboSet4,
     categoryName: "Plates",
-    offer: "combo-offer",
-    isWishlisted:true,
-    isInCart: false,
+    offer: "combo-offer",    
     isBestseller: false,
   },
   {
@@ -139,8 +123,6 @@ export const products = [
     imgURL:comboSet2,
     categoryName: "Gifts",
     offer:"combo-offer",
-    isWishlisted:false,
-    isInCart: false,
     isBestseller: true,
   },
   {
@@ -154,8 +136,6 @@ export const products = [
     imgURL:fancyBowls,
     categoryName: "Bowls",
     offer: "combo-offer",
-    isWishlisted:false,
-    isInCart: false,
     isBestseller: false,
   },
 ];
