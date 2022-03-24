@@ -28,7 +28,7 @@ const WishlistProvider = ({ children }) => {
         }
       );
       dispatch({
-        type: "ADD_TO_WISHLIST",
+        type: "SET_WISHLIST",
         payload: wishlist,
       });
     } catch (error) {
@@ -45,7 +45,7 @@ const WishlistProvider = ({ children }) => {
         },
       });
       dispatch({
-        type: "REMOVE_FROM_WISHLIST",
+        type: "SET_WISHLIST",
         payload: wishlist,
       });
     } catch (error) {

@@ -26,7 +26,7 @@ const CartProvider = ({ children }) => {
         }
       );
       cartDispatch({
-        type: "ADD_TO_CART",
+        type: "SET_CART",
         payload: cart,
       });
     } catch (error) {
@@ -43,7 +43,7 @@ const CartProvider = ({ children }) => {
         },
       });
       cartDispatch({
-        type: "REMOVE_FROM_CART",
+        type: "SET_CART",
         payload: cart,
       });
     } catch (error) {
@@ -70,7 +70,7 @@ const CartProvider = ({ children }) => {
       );
 
       cartDispatch({
-        type: "UPDATE_CART_QUANTITY",
+        type: "SET_CART",
         payload: cart,
       });
     } catch (error) {
