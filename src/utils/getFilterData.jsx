@@ -47,7 +47,7 @@ const unionCategory = (...arr) => {
   return data;
 };
 
-export const filterbyCategory = (productsList, categoriesList) => {
+export const filterByCategory = (productsList, categoriesList) => {
   let filteredProductsList = [];
   let flag = false;
   for (const category in categoriesList) {

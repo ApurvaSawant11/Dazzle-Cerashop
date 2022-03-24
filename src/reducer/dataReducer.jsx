@@ -5,8 +5,6 @@ const initialReducerData = {
   categoriesList: {},
   sortByRating: "",
   productsList: [],
-  cartList: [],
-  wishlist: [],
 };
 
 const dataReducer = (state, action) => {
@@ -64,13 +62,6 @@ const dataReducer = (state, action) => {
         },
       };
 
-    case "LOG_OUT":
-      return {
-        ...state,
-        cartList: [],
-        wishlist: [],
-      };
-
     case "CLEAR_FILTER":
       for (const cat in state.categoriesList) {
         state.categoriesList[cat] = false;
@@ -82,11 +73,10 @@ const dataReducer = (state, action) => {
         priceRange: { min: 0, max: 19999 },
         sliderValue: { left: 0, right: 0 },
         productsList: action.payload,
-        cartList: state.cartList,
       };
 
     default:
-      throw new Error("Error in reducer");
+      throw new Error("Error in Data Reducer");
   }
 };
 

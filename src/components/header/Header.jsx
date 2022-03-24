@@ -2,13 +2,15 @@ import { React, useState } from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets";
-import { useAuth } from "../../context";
+import { useAuth, useWishlist, useCart } from "../../context";
 
 const Header = () => {
   const [showInput, setShowInput] = useState(false);
   const [showNavDrawer, setShowNavDrawer] = useState(false);
 
   const { token } = useAuth();
+  const { wishlist } = useWishlist();
+  const { cartList } = useCart();
 
   return (
     <>
@@ -69,7 +71,13 @@ const Header = () => {
               className="navbar-icon-link flex-column-center"
               to="/wishlist"
             >
-              <i className="fas fa-heart"></i>
+              <i className="fas fa-heart badge badge-icon">
+                {wishlist.length > 0 && (
+                  <span className="badge-value icon-badge secondary">
+                    {wishlist.length}
+                  </span>
+                )}
+              </i>
               <span className="navbar-icon-text">Wishlist</span>
             </Link>
           </div>
@@ -77,7 +85,11 @@ const Header = () => {
           <div className="navbar-icon">
             <Link className="navbar-icon-link flex-column-center" to="/cart">
               <i className="fas fa-shopping-cart badge badge-icon">
-                <span className="badge-value icon-badge secondary">2</span>
+                {cartList.length > 0 && (
+                  <span className="badge-value icon-badge secondary">
+                    {cartList.length}
+                  </span>
+                )}
               </i>
               <span className="navbar-icon-text">Cart</span>
             </Link>

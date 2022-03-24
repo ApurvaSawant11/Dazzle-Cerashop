@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./profile.css";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useData } from "../../context";
+import { useAuth, useCart, useWishlist } from "../../context";
 
 const Profile = () => {
   const { user, setUser, setToken } = useAuth();
@@ -9,9 +9,14 @@ const Profile = () => {
   const navigate = useNavigate();
   const [check, setChecked] = useState(true);
   const [showSection, setShowSection] = useState("profile-section");
-  const { dispatch } = useData();
+  const { wishlistDispatch } = useWishlist();
+  const { cartDispatch } = useCart();
+
   const logOutHandler = () => {
-    dispatch({
+    wishlistDispatch({
+      type: "LOG_OUT",
+    });
+    cartDispatch({
       type: "LOG_OUT",
     });
     localStorage.removeItem("token");

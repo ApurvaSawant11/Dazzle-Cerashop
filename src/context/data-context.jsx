@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { initialReducerData, dataReducer } from "../reducer/dataReducer";
+import { initialReducerData, dataReducer } from "../reducer";
 import axios from "axios";
 
 const DataContext = createContext({
@@ -37,8 +37,6 @@ const DataProvider = ({ children }) => {
     sliderValue: state.sliderValue,
     categoriesList: state.categoriesList,
     productsList: state.productsList,
-    cartList: state.cartList,
-    wishlist: state.wishlist,
     dispatch: dispatch,
   };
 

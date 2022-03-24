@@ -1,0 +1,150 @@
+.table-container,
+.cart-footer {
+    display: table;
+    table-layout: auto;
+    border-spacing: 0 3rem;
+    width: 60%;
+}
+
+.cart-header {
+    display: table-header-group;
+}
+
+.cart-header-item {
+    display: table-cell;
+    border-bottom: 1px solid var(--light-gray);
+    text-transform: uppercase;
+}
+
+.cart-item {
+    display: table-row;
+}
+
+
+
+
+
+.coupon-input {
+    text-transform: uppercase;
+    padding: 0 4rem 0 0.5rem;
+}
+
+.coupon-input:focus {
+    border-color: var(--secondary);
+}
+
+.coupon-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.final-price,
+.cart-recap>span {
+    white-space: nowrap;
+}
+
+.cart-actions_mobile {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.price-detail-value {
+    float: right;
+}
+
+.checkout-btn {
+    width: 100%;
+}
+
+.cart-footer {
+    border-spacing: 0 1rem;
+    border-top: 2px solid var(--light-gray);
+}
+
+
+.cart-recap {
+    max-width: 12.5rem;
+}
+
+.coupon-wrapper>.input-field {
+    min-width: 23rem;
+}
+
+.cart-button.secondary-text {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1100px) {
+
+    .table-container,
+    .cart-footer {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 860px) {
+
+    .card-img-horizontal {
+        width: 10rem;
+        height: 10rem;
+    }
+
+}
+
+@media screen and (max-width: 720px) {
+
+    .table-container {
+        display: block;
+    }
+
+    .cart-item {
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        margin-bottom: 2rem;
+    }
+
+    .cart-header,
+    .cart_web {
+        display: none;
+    }
+
+    .cart-actions_mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .table-container .title {
+        font-size: 0.8rem;
+    }
+
+    .card-horizontal,
+    .coupon-wrapper>.input-field {
+        min-width: 100%;
+    }
+
+    .cart-item {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cart-footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-recap {
+        border-top: 2px solid var(--border-color);
+        padding-top: 1rem;
+        max-width: 100%;
+    }
+
+    .cart-offers {
+        margin: auto;
+    }
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { useData } from "../../context";
 import { ProductCard } from "../../components";
 import { ProductFilterBar } from "./ProductFilterBar";
-import { filterbyCategory, sortData } from "../../utils";
+import { filterByCategory, sortData } from "../../utils";
 
 const Products = () => {
   const {
@@ -13,7 +13,7 @@ const Products = () => {
     sortByRating,
   } = useData();
 
-  const filteredData = filterbyCategory([...data], categoriesList);
+  const filteredData = filterByCategory([...data], categoriesList);
   const sortedData = sortData(
     [...filteredData],
     sortByHighLow,

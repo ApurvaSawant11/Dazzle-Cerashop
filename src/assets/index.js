@@ -1,4 +1,6 @@
-export { default as logo} from "../assets/logo.svg"
+export { default as logo} from "./logo.svg"
+export { default as giftWrapper } from "./NotoWrappedGift.svg"
+export { default as phTag} from "./PhTag.svg"
 
 export { default as donutPlate} from "./images/black-donut-plate.jpg"
 export { default as blueCup} from "./images/blue-cup-black-bg.jpg"
