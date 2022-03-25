@@ -1,7 +1,7 @@
 import React from "react";
 import "./footer.css";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useData } from "../../context";
 import { FooterLinks } from "../../data/footer.data";
 
 import { logo } from "../../assets";
@@ -9,16 +9,32 @@ import { logo } from "../../assets";
 const Footer = () => {
   const { categoryLinks, accountLinks, helpLinks, socialLinks } = FooterLinks;
 
+  const { categoriesList, dispatch } = useData();
+  const navigate = useNavigate();
+
+  const clickHandler = (linkName) => {
+    // reseting categoriesList to false
+    for (let prop of Object.keys(categoriesList)) {
+      categoriesList[prop] = false;
+    }
+
+    dispatch({
+      type: "CATEGORY",
+      payload: { [linkName]: true },
+    });
+    navigate("/products");
+  };
+
   return (
     <footer className="basic-bg flex-row wrap items-start">
       <div className="footer-item footer-links">
         <h6 className="text-uppercase underline">Categories</h6>
         <ul className="links">
-          {categoryLinks.map(({ id, linkName, url }, index) => (
+          {categoryLinks.map(({ id, linkName, url }) => (
             <li key={id}>
-              <Link className="link" to={url}>
+              <div className="link" onClick={() => clickHandler(linkName)}>
                 {linkName}
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
@@ -27,7 +43,7 @@ const Footer = () => {
       <div className="footer-item footer-links">
         <h6 className="text-uppercase underline">Account</h6>
         <ul className="links">
-          {accountLinks.map(({ id, linkName, url }, index) => (
+          {accountLinks.map(({ id, linkName, url }) => (
             <li key={id}>
               <Link className="link" to={url}>
                 {linkName}
@@ -40,7 +56,7 @@ const Footer = () => {
       <div className="footer-item footer-links">
         <h6 className="text-uppercase underline">Help</h6>
         <ul className="links">
-          {helpLinks.map(({ id, linkName, url }, index) => (
+          {helpLinks.map(({ id, linkName, url }) => (
             <li key={id}>
               <Link className="link" to={url}>
                 {linkName}
@@ -61,7 +77,7 @@ const Footer = () => {
           Made with <i className="fas fa-heart"></i> by Apurva Sawant
         </small>
         <div className="mt-1">
-          {socialLinks.map(({ id, linkName, url }, index) => (
+          {socialLinks.map(({ id, linkName, url }) => (
             <a
               key={id}
               href={url}

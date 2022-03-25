@@ -34,17 +34,17 @@ const FooterLinks = {
     {
       id: uuid(),
       linkName: "My Account",
-      url: "#",
+      url: "/profile",
     },
     {
       id: uuid(),
       linkName: "Wishlist",
-      url: "#",
+      url: "/wishlist",
     },
     {
       id: uuid(),
       linkName: "Cart",
-      url: "#",
+      url: "/cart",
     },
     {
       id: uuid(),

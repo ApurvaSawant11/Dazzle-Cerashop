@@ -35,8 +35,11 @@ const Home = () => {
           {comboOffersList &&
             comboOffersList
               .slice(0, 4)
-              .map(({ _id, ...productDetails }) => (
-                <ProductCard key={_id} productDetails={productDetails} />
+              .map((productDetails) => (
+                <ProductCard
+                  key={productDetails._id}
+                  productDetails={productDetails}
+                />
               ))}
         </div>
       </section>

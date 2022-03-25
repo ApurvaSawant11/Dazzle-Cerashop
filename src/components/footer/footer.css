@@ -18,4 +18,5 @@ footer {
 .link {
     color: var(--light-black);
     text-decoration: none;
+    cursor: pointer;
 }
