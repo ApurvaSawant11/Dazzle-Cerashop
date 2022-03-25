@@ -44,7 +44,7 @@ const ProductPage = () => {
   };
   return (
     <section className="flex-row-center items-start wrap mt-2p5 product-section">
-      <img src={product?.imgURL} />
+      <img src={product?.imgURL} alt={product?.title} />
       <div className="product-form">
         <div className="product-header flex-row-center">
           <h5 className="text-uppercase pb-0p5">{product?.title}</h5>
