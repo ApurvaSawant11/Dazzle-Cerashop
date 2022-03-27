@@ -46,7 +46,7 @@ const ProductCard = ({ productDetails }) => {
           className="card-img-vertical img-responsive"
           src={imgURL}
           alt={title}
-          onClick={() => navigate(`/product/${_id}`)}
+          onClick={() => navigate(`/${_id}`)}
         />
 
         {isBestSeller && (
@@ -66,7 +66,7 @@ const ProductCard = ({ productDetails }) => {
       </div>
       <div
         className="card-details text-center"
-        onClick={() => navigate(`/product/${_id}`)}
+        onClick={() => navigate(`/${_id}`)}
       >
         <div className="title">{title}</div>
         <div className="card-footer-vertical">

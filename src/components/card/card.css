@@ -6,6 +6,7 @@
 
 .card-img-vertical {
     border-radius: 0;
+    cursor: pointer;
 }
 
 .card-vertical .card-details {

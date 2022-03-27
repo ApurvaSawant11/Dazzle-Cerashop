@@ -117,40 +117,47 @@ const Header = () => {
         }
       >
         <div className="flex-row-center drawer-header">
-          <Link to="/" className="nav-link">
+          <Link to="/products" className="nav-link">
             Home
           </Link>
-          <Link to="/" className="nav-link">
+          <Link to="/products" className="nav-link">
             Shop All
           </Link>
         </div>
-        <Link to="/" className="nav-link">
+        <Link to="/products" className="nav-link">
           Decor
         </Link>
-        <Link to="/" className="nav-link">
+        <Link to="/products" className="nav-link">
           Dining
         </Link>
-        <Link to="/" className="nav-link">
+        <Link to="/products" className="nav-link">
           Kitchen
         </Link>
-        <Link to="/" className="nav-link">
+        <Link to="/products" className="nav-link">
           Gifts
         </Link>
-        <Link to="/" className="nav-link">
+        <Link to="/products" className="nav-link">
           Brands
         </Link>
         <div className="drawer-footer border-top-1">
           <div className="navbar-icon p-1 pl-0p5">
-            <Link className="navbar-icon-link" to="/login">
-              <i className="fas fa-user-alt"></i>
-              <span className="navbar-icon-text">Login</span>
-            </Link>
+            {token ? (
+              <Link className="navbar-icon-link" to="/profile">
+                <i className="fas fa-user-alt"></i>
+                <span className="navbar-icon-text"> Profile</span>
+              </Link>
+            ) : (
+              <Link className="navbar-icon-link" to="/login">
+                <i className="fas fa-user-alt"></i>
+                <span className="navbar-icon-text"> Login</span>
+              </Link>
+            )}
           </div>
 
           <div className="navbar-icon p-1 pl-0p5">
             <Link className="navbar-icon-link" to="/wishlist">
               <i className="fas fa-heart"></i>
-              <span className="navbar-icon-text">Wishlist</span>
+              <span className="navbar-icon-text"> Wishlist</span>
             </Link>
           </div>
         </div>
