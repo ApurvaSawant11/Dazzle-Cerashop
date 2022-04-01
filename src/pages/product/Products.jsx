@@ -2,7 +2,7 @@ import React from "react";
 import { useData } from "../../context";
 import { ProductCard } from "../../components";
 import { ProductFilterBar } from "./ProductFilterBar";
-import { filterByCategory, sortData } from "../../utils";
+import { filterByCategory, sortData, searchProduct } from "../../utils";
 
 const Products = () => {
   const {
@@ -11,9 +11,11 @@ const Products = () => {
     sortByHighLow,
     priceRange,
     sortByRating,
+    search,
   } = useData();
 
-  const filteredData = filterByCategory([...data], categoriesList);
+  const searchedData = searchProduct([...data], search);
+  const filteredData = filterByCategory([...searchedData], categoriesList);
   const sortedData = sortData(
     [...filteredData],
     sortByHighLow,

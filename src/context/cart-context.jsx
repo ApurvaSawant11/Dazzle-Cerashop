@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import axios from "axios";
 import { cartReducer } from "../reducer";
 
@@ -9,6 +9,10 @@ const CartContext = createContext({
 
 const CartProvider = ({ children }) => {
   const [state, cartDispatch] = useReducer(cartReducer, { cartList: [] });
+  const [couponDetails, setCouponDetails] = useState({
+    couponCode: "",
+    value: 0,
+  });
 
   const addToCart = async (cartDispatch, product, token) => {
     try {
@@ -84,6 +88,8 @@ const CartProvider = ({ children }) => {
     addToCart,
     removeFromCart,
     updateCartQuantity,
+    couponDetails,
+    setCouponDetails,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

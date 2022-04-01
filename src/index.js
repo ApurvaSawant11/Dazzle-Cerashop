@@ -16,11 +16,11 @@ ReactDOM.render(
     <BrowserRouter>
     <WishlistProvider>
       <CartProvider>
-      <AuthProvider>
         <DataProvider>
+        <AuthProvider>
           <App/>
+          </AuthProvider>
         </DataProvider>
-      </AuthProvider>
       </CartProvider>
       </WishlistProvider>
     </BrowserRouter>

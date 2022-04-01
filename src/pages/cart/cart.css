@@ -20,7 +20,11 @@
     display: table-row;
 }
 
-
+.coupon-applied {
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--secondary);
+}
 
 
 

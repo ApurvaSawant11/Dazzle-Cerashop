@@ -1,0 +1,12 @@
+.basic-modal, .form-modal{
+    z-index: 5;
+}
+
+.basic-modal .input-field, .form-modal .input-field {
+    max-width: 100%;
+}
+
+.form-modal .modal {
+    padding: 3rem;
+    max-width: 30rem;
+}
