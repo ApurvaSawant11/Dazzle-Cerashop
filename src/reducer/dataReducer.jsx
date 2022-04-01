@@ -34,7 +34,6 @@ const dataReducer = (state, action) => {
       };
 
     case "INITIALIZE_ADDRESS":
-      console.log("here is the adress", action.payload);
       return {
         ...state,
         address: action.payload,
@@ -72,7 +71,6 @@ const dataReducer = (state, action) => {
       };
 
     case "ADDRESS":
-      console.log("in dispatch", action.payload);
       return { ...state, address: [...action.payload] };
 
     case "SEARCH":

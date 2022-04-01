@@ -120,7 +120,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateAddress = async (dispatch, address, token) => {
-    console.log("addressservices", address);
     try {
       const { data } = await axios.post(
         `api/user/address/${address._id}`,
