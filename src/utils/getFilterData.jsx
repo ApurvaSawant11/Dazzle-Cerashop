@@ -38,6 +38,14 @@ export const sortData = (
   return productsList;
 };
 
+export function searchProduct(productsList, search) {
+  return search
+    ? productsList.filter((product) =>
+        product.title.toLowerCase().includes(search.toLowerCase())
+      )
+    : productsList;
+}
+
 const unionCategory = (...arr) => {
   const data = arr.reduce((acc, curr) => {
     return acc.concat(

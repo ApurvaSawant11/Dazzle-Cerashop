@@ -5,6 +5,8 @@ const initialReducerData = {
   categoriesList: {},
   sortByRating: "",
   productsList: [],
+  address: [],
+  search: "",
 };
 
 const dataReducer = (state, action) => {
@@ -29,6 +31,12 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         productsList: action.payload,
+      };
+
+    case "INITIALIZE_ADDRESS":
+      return {
+        ...state,
+        address: action.payload,
       };
 
     case "PRICE_RANGE":
@@ -62,6 +70,15 @@ const dataReducer = (state, action) => {
         },
       };
 
+    case "ADDRESS":
+      return { ...state, address: [...action.payload] };
+
+    case "SEARCH":
+      return {
+        ...state,
+        search: action.payload,
+      };
+
     case "CLEAR_FILTER":
       for (const cat in state.categoriesList) {
         state.categoriesList[cat] = false;
@@ -73,6 +90,7 @@ const dataReducer = (state, action) => {
         priceRange: { min: 0, max: 19999 },
         sliderValue: { left: 0, right: 0 },
         productsList: action.payload,
+        search: "",
       };
 
     default:

@@ -37,6 +37,8 @@ const DataProvider = ({ children }) => {
     sliderValue: state.sliderValue,
     categoriesList: state.categoriesList,
     productsList: state.productsList,
+    address: state.address,
+    search: state.search,
     dispatch: dispatch,
   };
 

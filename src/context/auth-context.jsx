@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useReducer } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useData } from "../context/data-context";
 
 const AuthContext = createContext();
 
@@ -8,6 +9,27 @@ const AuthProvider = ({ children }) => {
   const localStorageUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(localStorageUser?.user);
   const [token, setToken] = useState(localStorageToken?.token);
+  const { dispatch } = useData();
+
+  useEffect(() => {
+    if (token) {
+      (async () => {
+        try {
+          const { data: address } = await axios.get("api/user/address", {
+            headers: {
+              authorization: token,
+            },
+          });
+          dispatch({
+            type: "INITIALIZE_ADDRESS",
+            payload: address.address,
+          });
+        } catch (error) {
+          console.error("Error in initialize address context");
+        }
+      })();
+    }
+  }, []);
 
   const loginUser = async (email, password) => {
     if (email && password !== "") {
@@ -60,7 +82,77 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const value = { token, setToken, user, setUser, loginUser, signupUser };
+  const addAddress = async (dispatch, address, token) => {
+    try {
+      const { data } = await axios.post(
+        "api/user/address",
+        {
+          address,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      dispatch({
+        type: "ADDRESS",
+        payload: data.address,
+      });
+    } catch (error) {
+      console.error("Error in addAddress context", error);
+    }
+  };
+  const removeAddress = async (dispatch, addressId, token) => {
+    try {
+      const { data } = await axios.delete(`api/user/address/${addressId}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      dispatch({
+        type: "ADDRESS",
+        payload: data.address,
+      });
+    } catch (error) {
+      console.error("Error in removeAddress context", error);
+    }
+  };
+
+  const updateAddress = async (dispatch, address, token) => {
+    try {
+      const { data } = await axios.post(
+        `api/user/address/${address._id}`,
+        {
+          address,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+
+      dispatch({
+        type: "ADDRESS",
+        payload: data.address,
+      });
+    } catch (error) {
+      console.error("Error in updateAddress context", error);
+    }
+  };
+
+  const value = {
+    token,
+    setToken,
+    user,
+    setUser,
+    loginUser,
+    signupUser,
+    addAddress,
+    updateAddress,
+    removeAddress,
+  };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

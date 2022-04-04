@@ -1,16 +1,36 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logo } from "../../assets";
-import { useAuth, useWishlist, useCart } from "../../context";
+import { useAuth, useWishlist, useCart, useData } from "../../context";
 
 const Header = () => {
   const [showInput, setShowInput] = useState(false);
   const [showNavDrawer, setShowNavDrawer] = useState(false);
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
   const { token } = useAuth();
+  const { dispatch } = useData();
   const { wishlist } = useWishlist();
   const { cartList } = useCart();
+
+  const searchHandler = (e) => {
+    if (e.key === "Enter" || e.target.value === "" || e.type === "click")
+      dispatch({
+        type: "SEARCH",
+        payload: e.type === "click" ? input : e.target.value,
+      });
+    navigate("/products");
+  };
+
+  useEffect(() => {
+    setInput("");
+    dispatch({
+      type: "SEARCH",
+      payload: "",
+    });
+  }, [navigate]);
 
   return (
     <>
@@ -98,15 +118,27 @@ const Header = () => {
       </header>
 
       {showInput && (
-        <form className="navbar-searchbar radius-0">
+        <form
+          className="navbar-searchbar radius-0"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <input
             className="search-input"
             placeholder="What are you looking for?"
+            value={input}
+            onKeyDown={(e) => searchHandler(e)}
+            onChange={(e) => setInput(e.target.value)}
           />
-          <i className="fa fa-search searchbar-search-icon"></i>
+          <i
+            className="fa fa-search searchbar-search-icon"
+            onClick={(e) => searchHandler(e)}
+          ></i>
           <i
             className="fas fa-times searchbar-close-icon"
-            onClick={() => setShowInput(!showInput)}
+            onClick={() => {
+              setShowInput(!showInput);
+              setInput("");
+            }}
           ></i>
         </form>
       )}
