@@ -79,6 +79,12 @@ const dataReducer = (state, action) => {
         search: action.payload,
       };
 
+    case "CLEAR_SORT_HIGH_LOW":
+      return {
+        ...state,
+        sortByHighLow: "",
+      };
+
     case "CLEAR_FILTER":
       for (const cat in state.categoriesList) {
         state.categoriesList[cat] = false;

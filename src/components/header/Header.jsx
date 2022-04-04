@@ -149,37 +149,73 @@ const Header = () => {
         }
       >
         <div className="flex-row-center drawer-header">
-          <Link to="/products" className="nav-link">
+          <Link
+            to="/products"
+            className="nav-link"
+            onClick={() => setShowNavDrawer(false)}
+          >
             Home
           </Link>
-          <Link to="/products" className="nav-link">
+          <Link
+            to="/products"
+            className="nav-link"
+            onClick={() => setShowNavDrawer(false)}
+          >
             Shop All
           </Link>
         </div>
-        <Link to="/products" className="nav-link">
+        <Link
+          to="/products"
+          className="nav-link"
+          onClick={() => setShowNavDrawer(false)}
+        >
           Decor
         </Link>
-        <Link to="/products" className="nav-link">
+        <Link
+          to="/products"
+          className="nav-link"
+          onClick={() => setShowNavDrawer(false)}
+        >
           Dining
         </Link>
-        <Link to="/products" className="nav-link">
+        <Link
+          to="/products"
+          className="nav-link"
+          onClick={() => setShowNavDrawer(false)}
+        >
           Kitchen
         </Link>
-        <Link to="/products" className="nav-link">
+        <Link
+          to="/products"
+          className="nav-link"
+          onClick={() => setShowNavDrawer(false)}
+        >
           Gifts
         </Link>
-        <Link to="/products" className="nav-link">
+        <Link
+          to="/products"
+          className="nav-link"
+          onClick={() => setShowNavDrawer(false)}
+        >
           Brands
         </Link>
         <div className="drawer-footer border-top-1">
           <div className="navbar-icon p-1 pl-0p5">
             {token ? (
-              <Link className="navbar-icon-link" to="/profile">
+              <Link
+                className="navbar-icon-link"
+                to="/profile"
+                onClick={() => setShowNavDrawer(false)}
+              >
                 <i className="fas fa-user-alt"></i>
                 <span className="navbar-icon-text"> Profile</span>
               </Link>
             ) : (
-              <Link className="navbar-icon-link" to="/login">
+              <Link
+                className="navbar-icon-link"
+                to="/login"
+                onClick={() => setShowNavDrawer(false)}
+              >
                 <i className="fas fa-user-alt"></i>
                 <span className="navbar-icon-text"> Login</span>
               </Link>
@@ -187,7 +223,11 @@ const Header = () => {
           </div>
 
           <div className="navbar-icon p-1 pl-0p5">
-            <Link className="navbar-icon-link" to="/wishlist">
+            <Link
+              className="navbar-icon-link"
+              to="/wishlist"
+              onClick={() => setShowNavDrawer(false)}
+            >
               <i className="fas fa-heart"></i>
               <span className="navbar-icon-text"> Wishlist</span>
             </Link>

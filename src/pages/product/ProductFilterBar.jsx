@@ -8,7 +8,7 @@ const SORT_HIGH_LOW = [
   { sortText: "High to Low", sortType: "HIGH_TO_LOW" },
 ];
 
-const ProductFilterBar = () => {
+const ProductFilterBar = ({ mobileFilter, setMobileFilter }) => {
   const {
     sortByHighLow,
     priceRange,
@@ -47,9 +47,13 @@ const ProductFilterBar = () => {
   };
 
   return (
-    <div className="filter-bar pt-0p5 p-2p5">
+    <div
+      className={`filter-bar pt-0p5 p-2p5 ${
+        mobileFilter ? "filter-drawer" : ""
+      } `}
+    >
       <div className="text-right mt-1 button-link">
-        <i className="fa-solid fa-x"></i>
+        <i className="fas fa-times" onClick={() => setMobileFilter(false)}></i>
       </div>
       <div className="filter-header text-uppercase border-bottom-1 pb-0p5 flex-row items-center wrap">
         <h5>Filters</h5>
@@ -129,8 +133,8 @@ const ProductFilterBar = () => {
         </label>
       ))}
 
-      <h6 className="text-uppercase">Sort by</h6>
-      <div className="flex-gap">
+      <h6 className="text-uppercase sort-by">Sort by</h6>
+      <div className="flex-gap sort-by">
         {SORT_HIGH_LOW.map(({ sortText, sortType }, index) => (
           <label key={index} className="radio-container">
             <input
@@ -144,6 +148,13 @@ const ProductFilterBar = () => {
           </label>
         ))}
       </div>
+
+      <button
+        class="button primary radius-0 add-filter-btn mt-2"
+        onClick={() => setMobileFilter(false)}
+      >
+        Add Filters
+      </button>
     </div>
   );
 };
