@@ -20,11 +20,11 @@ const CartCard = ({ productDetails, wishlist, dispatch }) => {
   const isInWishlist = isProductInWishlist(wishlist, _id);
 
   const cartQuantityHandler = async (type) => {
-    await updateCartQuantity(_id, dispatch, token, type);
+    await updateCartQuantity(_id, dispatch, token, type, toast);
   };
 
   const moveToWishlist = () => {
-    removeFromCart(_id, dispatch, token);
+    removeFromCart(_id, dispatch, token, toast);
     !isInWishlist &&
       addToWishlist(wishlistDispatch, productDetails, token, toast);
   };

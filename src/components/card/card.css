@@ -13,6 +13,14 @@
     height: 5.5rem;
 }
 
+.card-vertical .title {
+    font-size: 1rem;
+}
+
+.card-vertical .rating-icon {
+    font-size: 0.85rem;
+}
+
 .title {
     text-transform: uppercase;
     font-weight: 500;
@@ -91,6 +99,12 @@
 .wishlisted, .wishlist-btn:hover {
     font-weight: 800;
     color: var(--danger);
+}
+
+.badge-rating {
+    position: absolute;
+    bottom: 1rem;
+    right: 0.5rem;
 }
 
 /* || Media Queries */

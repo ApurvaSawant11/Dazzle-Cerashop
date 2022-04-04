@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./productFilterBar.css";
 import { useData } from "../../context";
 
@@ -33,7 +33,7 @@ const ProductFilterBar = () => {
   const isSortByPrice = (type) => sortByHighLow && sortByHighLow === type;
 
   const onPriceChangeHandler = (type, value, e) => {
-    const priceGap = 1000;
+    const priceGap = 500;
     if (type === "min") {
       if (priceRange.max - value >= priceGap) {
         priceRange.min = value;
@@ -68,7 +68,7 @@ const ProductFilterBar = () => {
             type="range"
             className="range"
             min="0"
-            max="19999"
+            max="8000"
             value={priceRange.min}
             onChange={(e) => onPriceChangeHandler("min", e.target.value, e)}
           />
@@ -76,7 +76,7 @@ const ProductFilterBar = () => {
             type="range"
             className="range"
             min="0"
-            max="19999"
+            max="8000"
             value={priceRange.max}
             onChange={(e) => onPriceChangeHandler("max", e.target.value, e)}
           />

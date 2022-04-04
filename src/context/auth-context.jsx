@@ -129,7 +129,7 @@ const AuthProvider = ({ children }) => {
         type: "ADDRESS",
         payload: data.address,
       });
-      toast.warn("Address removed", { icon: <RemoveIcon size="2rem" /> });
+      toast.error("Address removed", { icon: <RemoveIcon size="2rem" /> });
     } catch (error) {
       console.error("Error in removeAddress context", error);
       toast.error("Sorry! COuld not remove address", {

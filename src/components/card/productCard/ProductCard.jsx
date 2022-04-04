@@ -10,12 +10,15 @@ const ProductCard = ({ productDetails }) => {
     title,
     imgURL,
     price: { discounted, original },
-    isBestSeller,
+    isBestseller,
+    rating,
   } = productDetails;
 
   const { wishlist, removeFromWishlist, addToWishlist, wishlistDispatch } =
     useWishlist();
   const { cartList, addToCart, cartDispatch } = useCart();
+
+  const RATING_STARS = [1, 2, 3, 4, 5];
 
   const navigate = useNavigate();
   const { token } = useAuth();
@@ -50,7 +53,7 @@ const ProductCard = ({ productDetails }) => {
           onClick={() => navigate(`/product/${_id}`)}
         />
 
-        {isBestSeller && (
+        {isBestseller && (
           <span className="badge-text badge-on-left success px-0p5">
             Bestseller
           </span>
@@ -69,7 +72,18 @@ const ProductCard = ({ productDetails }) => {
         className="card-details text-center"
         onClick={() => navigate(`/product/${_id}`)}
       >
-        <div className="title">{title}</div>
+        <div className="title flex-column-center">
+          <span>{title}</span>
+          <span>
+            {RATING_STARS.map((star) => (
+              <i
+                className={`rating-icon rating-icon--star fa fa-star fw-500 ${
+                  rating >= star ? "fw-900" : ""
+                }`}
+              ></i>
+            ))}
+          </span>
+        </div>
         <div className="card-footer-vertical">
           <span className="discountedPrice">Rs. {discounted}</span>
           <span className="originalPrice pl-0p5">Rs. {original}</span>

@@ -62,7 +62,13 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const updateCartQuantity = async (_id, cartDispatch, token, actionType) => {
+  const updateCartQuantity = async (
+    _id,
+    cartDispatch,
+    token,
+    actionType,
+    toast
+  ) => {
     try {
       const {
         data: { cart },
@@ -84,6 +90,13 @@ const CartProvider = ({ children }) => {
         type: "SET_CART",
         payload: cart,
       });
+      actionType === "INC_QTY"
+        ? toast.success("Increased product quantity", {
+            icon: <CheckMarkIcon size="2rem" />,
+          })
+        : toast.error("Decreased product quantity", {
+            icon: <RemoveIcon size="2rem" />,
+          });
     } catch (error) {
       console.error("Error in updateCartQuantity Context", error);
     }

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth, useData, useCart, useWishlist } from "../../context";
 import { AddressModal } from "../../components";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   useDocumentTitle("My Profile");
@@ -189,7 +190,9 @@ const Profile = () => {
                     </span>
                     <span
                       className="button-link danger-text p-0p5 remove-btn"
-                      onClick={() => removeAddress(dispatch, item._id, token)}
+                      onClick={() =>
+                        removeAddress(dispatch, item._id, token, toast)
+                      }
                     >
                       Remove
                     </span>
