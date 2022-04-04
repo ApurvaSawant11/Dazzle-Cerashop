@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useAuth, useWishlist, useCart } from "../../../context";
 import { isProductInCart, isProductInWishlist } from "../../../utils";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ productDetails }) => {
   const {
@@ -26,15 +27,15 @@ const ProductCard = ({ productDetails }) => {
     token
       ? isInCart
         ? navigate("/cart")
-        : addToCart(cartDispatch, productDetails, token)
+        : addToCart(cartDispatch, productDetails, token, toast)
       : navigate("/login");
   };
 
   const wishlistHandler = () => {
     token
       ? isInWishlist
-        ? removeFromWishlist(_id, wishlistDispatch, token)
-        : addToWishlist(wishlistDispatch, productDetails, token)
+        ? removeFromWishlist(_id, wishlistDispatch, token, toast)
+        : addToWishlist(wishlistDispatch, productDetails, token, toast)
       : navigate("/login");
   };
 

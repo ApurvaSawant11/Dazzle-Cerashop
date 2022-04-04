@@ -3,8 +3,10 @@ import "./profile.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useData, useCart, useWishlist } from "../../context";
 import { AddressModal } from "../../components";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const Profile = () => {
+  useDocumentTitle("My Profile");
   const { user, setUser, token, setToken, removeAddress } = useAuth();
   const { firstName, lastName, email } = user;
   const { address, dispatch } = useData();

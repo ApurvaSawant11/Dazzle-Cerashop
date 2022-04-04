@@ -6,6 +6,12 @@
     --card-button-hover: #f0fffb;
     --opacity-50: rgba(0, 0, 0, 0.26);
     --opacity-80: rgba(0, 0, 0, 0.8);
+    /* !important is used to override react toastify colors */
+    --toastify-color-info: var(--info) !important;
+    --toastify-color-success: var(--secondary) !important;
+    --toastify-color-warning: var(--warning) !important;
+    --toastify-color-error: var(--danger) !important;
+    --toastify-text-color-light: var(--primary) !important;
 }
 
 * {

@@ -4,8 +4,10 @@ import { Carousel, CategoryCard, ProductCard } from "../../components";
 import { useData } from "../../context";
 import { filterByOffers } from "../../utils";
 import axios from "axios";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const Home = () => {
+  useDocumentTitle("Home");
   const { productsList: data } = useData();
   const [categoriesList, setCategoriesList] = useState([]);
 

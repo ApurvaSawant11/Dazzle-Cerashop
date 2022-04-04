@@ -17,3 +17,9 @@ export { default as whiteGoldPlate} from "./images/white-plate-gold-border.jpg"
 export { default as comboSet2} from "./images/combo-set-2.jpg";
 export { default as comboSet3} from "./images/combo-set-3.jpg";
 export { default as comboSet4} from "./images/combo-set-4.jpg";
+
+export { FaHeart as HeartIcon, FaShoppingCart as CartIcon } from "react-icons/fa";
+export { IoIosRemoveCircle as RemoveIcon } from "react-icons/io";
+export { MdError as ErrorIcon } from "react-icons/md";
+export { RiCoupon3Fill as CouponIcon } from "react-icons/ri";
+export { GiCheckMark as  CheckMarkIcon } from "react-icons/gi";

@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import "./productPage.css";
 import { useNavigate, useParams } from "react-router";
 import { useAuth, useCart, useData, useWishlist } from "../../context";
-
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import {
   calcPercentage,
   isProductInCart,
   isProductInWishlist,
 } from "../../utils";
+import { toast } from "react-toastify";
 
 const ProductPage = () => {
+  useDocumentTitle("Product");
   const [productQty, setProductQty] = useState(1);
   const { productId } = useParams();
   const { productsList } = useData();
@@ -31,15 +33,15 @@ const ProductPage = () => {
     token
       ? isInCart
         ? navigate("/cart")
-        : addToCart(cartDispatch, product, token)
+        : addToCart(cartDispatch, product, token, toast)
       : navigate("/login");
   };
 
   const wishlistHandler = () => {
     token
       ? isInWishlist
-        ? removeFromWishlist(product?._id, wishlistDispatch, token)
-        : addToWishlist(wishlistDispatch, product, token)
+        ? removeFromWishlist(product?._id, wishlistDispatch, token, toast)
+        : addToWishlist(wishlistDispatch, product, token, toast)
       : navigate("/login");
   };
   return (

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { CouponIcon } from "../../assets";
 import { useCart } from "../../context";
 
 const CouponModal = ({ setShowModal }) => {
@@ -52,6 +54,9 @@ const CouponModal = ({ setShowModal }) => {
             onClick={() => {
               setShowModal(false);
               setCouponDetails(input);
+              toast.success("Coupon Applied!", {
+                icon: <CouponIcon size="2rem" />,
+              });
             }}
           >
             Apply

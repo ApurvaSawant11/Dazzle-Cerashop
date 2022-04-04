@@ -4,8 +4,10 @@ import { CartSummary } from "./CartSummary";
 import { Link } from "react-router-dom";
 import { CartCard } from "../../components";
 import { useCart, useWishlist } from "../../context";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const Cart = () => {
+  useDocumentTitle("My Cart");
   const { cartList, cartDispatch } = useCart();
   const { wishlist } = useWishlist();
 

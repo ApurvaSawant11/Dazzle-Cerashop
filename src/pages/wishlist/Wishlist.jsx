@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { WishlistCard } from "../../components";
 import { useCart, useWishlist } from "../../context";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const Wishlist = () => {
+  useDocumentTitle("My Wishlist");
   const { wishlist, wishlistDispatch } = useWishlist();
   const { cartList } = useCart();
 

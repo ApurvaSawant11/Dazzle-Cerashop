@@ -2,6 +2,7 @@ import React from "react";
 import "./cartCard.css";
 import { useAuth, useCart, useWishlist } from "../../../context";
 import { isProductInWishlist, calcPercentage } from "../../../utils";
+import { toast } from "react-toastify";
 
 const CartCard = ({ productDetails, wishlist, dispatch }) => {
   const {
@@ -24,7 +25,8 @@ const CartCard = ({ productDetails, wishlist, dispatch }) => {
 
   const moveToWishlist = () => {
     removeFromCart(_id, dispatch, token);
-    !isInWishlist && addToWishlist(wishlistDispatch, productDetails, token);
+    !isInWishlist &&
+      addToWishlist(wishlistDispatch, productDetails, token, toast);
   };
 
   return (
@@ -43,7 +45,7 @@ const CartCard = ({ productDetails, wishlist, dispatch }) => {
             <div>
               <button
                 className="cart-button danger-text"
-                onClick={() => removeFromCart(_id, dispatch, token)}
+                onClick={() => removeFromCart(_id, dispatch, token, toast)}
               >
                 Remove
               </button>{" "}
@@ -79,7 +81,7 @@ const CartCard = ({ productDetails, wishlist, dispatch }) => {
       <div className="cart-actions cart_web">
         <div className="quantity-selector m-auto">
           <button
-            className="quantity-btn"
+            className={qty !== 1 ? "quantity-btn" : "quantity-btn disabled"}
             onClick={() => cartQuantityHandler("DEC_QTY")}
           >
             -

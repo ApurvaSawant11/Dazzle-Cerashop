@@ -3,8 +3,10 @@ import { useData } from "../../context";
 import { ProductCard } from "../../components";
 import { ProductFilterBar } from "./ProductFilterBar";
 import { filterByCategory, sortData, searchProduct } from "../../utils";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const Products = () => {
+  useDocumentTitle("Products");
   const {
     categoriesList,
     productsList: data,
