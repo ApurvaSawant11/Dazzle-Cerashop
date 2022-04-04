@@ -36,9 +36,8 @@ export const getAddressHandler = function (schema, request) {
 };
 
 /**
- * This handler handles adding items to user's address.
+ * This handler handles adding new address to user's address.
  * send POST Request at /api/user/address
- * body contains {product}
  * */
 
 export const addAddressHandler = function (schema, request) {
@@ -90,7 +89,7 @@ export const addAddressHandler = function (schema, request) {
 };
 
 /**
- * This handler handles removing items to user's address.
+ * This handler handles removing address from user's addresses
  * send DELETE Request at /api/user/address/:addressId
  * */
 
@@ -140,9 +139,8 @@ export const removeAddressHandler = function (schema, request) {
 };
 
 /**
- * This handler handles adding items to user's address.
+ * This handler handles updating user's address.
  * send POST Request at /api/user/address/:addressId
- * body contains {action} (whose 'type' can be increment or decrement)
  * */
 
 export const updateAddressHandler = function (schema, request) {
