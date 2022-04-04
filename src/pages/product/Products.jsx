@@ -32,7 +32,7 @@ const Products = () => {
         <span className="fw-500 text-xs">({sortedData.length} products)</span>
       </h4>
 
-      <div className="product-container border-bottom-1 my-3">
+      <div className="product-container border-bottom-1 mb-4">
         <ProductFilterBar />
 
         <div className="grid-container border-left-1 p-2">

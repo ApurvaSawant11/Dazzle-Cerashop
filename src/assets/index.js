@@ -14,6 +14,10 @@ export { default as pots} from "./images/pots.jpg"
 export { default as whiteBrownPlanter} from "./images/white-brown-planter.jpg"
 export { default as whiteGoldPlate} from "./images/white-plate-gold-border.jpg"
 
+export { default as emptyWishlist } from "./images/empty-wishlist.jpg";
+export { default as emptyCart } from "./images/empty-cart.jpg";
+export { default as emptyPage } from "./images/empty-page.jpg";
+
 export { default as comboSet2} from "./images/combo-set-2.jpg";
 export { default as comboSet3} from "./images/combo-set-3.jpg";
 export { default as comboSet4} from "./images/combo-set-4.jpg";

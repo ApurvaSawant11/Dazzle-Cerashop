@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { CartCard } from "../../components";
 import { useCart, useWishlist } from "../../context";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { emptyCart } from "../../assets";
 
 const Cart = () => {
   useDocumentTitle("My Cart");
@@ -14,17 +15,31 @@ const Cart = () => {
   const isCartEmpty = cartList.length < 1;
 
   return (
-    <div>
-      <main>
-        <h4 className="text-center text-uppercase p-1">My Cart</h4>
-        {isCartEmpty ? (
-          <p>
-            Oops! Your cart is empty! 😓. Add product to your cart from{" "}
-            <Link to="/products" className="secondary-text">
-              HERE
-            </Link>
-          </p>
-        ) : (
+    <main>
+      {isCartEmpty ? (
+        <div className="flex-row-center image-container">
+          <div className="empty-page-text">
+            <h5>Oops! Your cart looks empty! 😓</h5>
+            <h6>
+              Add products to your cart from{" "}
+              <Link
+                to="/products"
+                className="secondary-text primary-bg py-0 p-0p5"
+              >
+                HERE
+              </Link>
+            </h6>
+          </div>
+          <img
+            className="empty-page-image"
+            src={emptyCart}
+            loading="lazy"
+            alt="empty cart"
+          />
+        </div>
+      ) : (
+        <>
+          <h4 className="text-center text-uppercase p-1">My Cart</h4>
           <div className="table-container m-auto">
             <div className="cart-header">
               <span className="cart-header-item pb-1">Product</span>
@@ -42,11 +57,11 @@ const Cart = () => {
               />
             ))}
           </div>
-        )}
+        </>
+      )}
 
-        {!isCartEmpty && <CartSummary />}
-      </main>
-    </div>
+      {!isCartEmpty && <CartSummary />}
+    </main>
   );
 };
 

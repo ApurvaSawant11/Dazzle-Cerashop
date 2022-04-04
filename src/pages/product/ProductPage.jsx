@@ -45,7 +45,7 @@ const ProductPage = () => {
       : navigate("/login");
   };
   return (
-    <section className="flex-row-center items-start wrap mt-2p5 product-section">
+    <section className="flex-row-center items-start wrap mt-2p5 mb-4 product-section">
       <img src={product?.imgURL} alt={product?.title} />
       <div className="product-form">
         <div className="product-header flex-row-center">

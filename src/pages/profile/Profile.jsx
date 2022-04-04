@@ -53,7 +53,7 @@ const Profile = () => {
   };
 
   return (
-    <main className="flex-row-center wrap items-start mt-2p5 pt-2">
+    <main className="flex-row-center wrap items-start mt-2p5 mb-4 pt-2">
       <aside className="profile-aside pr-2 flex-column gap-1">
         <div className="flex-column">
           <p className="heading text-uppercase border-bottom-1 pb-0p5">

@@ -23,7 +23,7 @@ const CartSummary = () => {
 
   return (
     <>
-      <div className="cart-footer m-auto">
+      <div className="cart-footer m-auto mb-4">
         <div className="cart-offers">
           <div className="gift-wrapper flex-row m-2 ml-0">
             <img className="gift-svg" src={giftWrapper} alt="Gift Wrapper" />
