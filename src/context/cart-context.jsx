@@ -20,7 +20,7 @@ const CartProvider = ({ children }) => {
       const {
         data: { cart },
       } = await axios.post(
-        "api/user/cart",
+        "/api/user/cart",
         {
           product,
         },
@@ -30,6 +30,7 @@ const CartProvider = ({ children }) => {
           },
         }
       );
+
       cartDispatch({
         type: "SET_CART",
         payload: cart,
@@ -45,7 +46,7 @@ const CartProvider = ({ children }) => {
     try {
       const {
         data: { cart },
-      } = await axios.delete(`api/user/cart/${_id}`, {
+      } = await axios.delete(`/api/user/cart/${_id}`, {
         headers: {
           authorization: token,
         },
@@ -54,9 +55,10 @@ const CartProvider = ({ children }) => {
         type: "SET_CART",
         payload: cart,
       });
-      toast.warn("Removed from Cart", {
-        icon: <RemoveIcon size="2rem" className="primary-text" />,
-      });
+      toast &&
+        toast.warn("Removed from Cart", {
+          icon: <RemoveIcon size="2rem" className="primary-text" />,
+        });
     } catch (error) {
       console.error("Error in removeFromCart Context", error);
     }

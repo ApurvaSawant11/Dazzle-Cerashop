@@ -5,8 +5,11 @@ import "./checkout.css";
 import { CheckoutAddress } from "./CheckoutAddress";
 import { toast } from "react-toastify";
 import { ErrorIcon } from "../../assets";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { getDeliveryDate } from "../../utils";
 
 const Checkout = () => {
+  useDocumentTitle("Checkout");
   const navigate = useNavigate();
   const {
     token,
@@ -103,7 +106,12 @@ const Checkout = () => {
               <img className="checkout-image" src={imgURL} alt={title} />
               <span className="mini-badge secondary">{qty}</span>
             </div>
-            <div className="pl-1">{title}</div>
+            <div className="pl-1">
+              <div>{title}</div>
+              <div className="delivery-date">
+                Estimated Delivery: {getDeliveryDate()}
+              </div>
+            </div>
           </div>
         ))}
 

@@ -3,8 +3,10 @@ import "./orderSummary.css";
 import { useOrder } from "../../context";
 import { CartIcon, BsCheckCircle } from "../../assets";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const OrderSummary = () => {
+  useDocumentTitle("Order Summary");
   const {
     order: {
       totalAmount,

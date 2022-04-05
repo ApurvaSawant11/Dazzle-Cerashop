@@ -127,7 +127,7 @@ const CartSummary = () => {
           </div>
           <button
             className="button primary mt-1  radius-0 checkout-btn"
-            onClick={() => checkoutHandler()}
+            onClick={checkoutHandler}
           >
             Checkout
           </button>
