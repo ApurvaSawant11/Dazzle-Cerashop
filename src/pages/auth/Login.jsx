@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { authImage } from "../../assets";
+import { toast } from "react-toastify";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const Login = () => {
+  useDocumentTitle("Login");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,7 +22,7 @@ const Login = () => {
   }
 
   const loginHandler = () => {
-    loginUser(formData.email, formData.password);
+    loginUser(formData.email, formData.password, toast);
   };
 
   const guestLoginHandler = (e) => {
@@ -78,12 +81,7 @@ const Login = () => {
         </div>
         <div className="authbox-container flex-row gap-1 mt-0p5">
           <label htmlFor="auth-checkbox">
-            <input
-              id="auth-checkbox"
-              name="rememberMe"
-              type="checkbox"
-              checked
-            />{" "}
+            <input id="auth-checkbox" name="rememberMe" type="checkbox" />{" "}
             Remember me
           </label>
           <Link

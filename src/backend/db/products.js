@@ -69,7 +69,7 @@ export const products = [
     imgURL:whiteGoldPlate,
     categoryName: "Plates",
     offer:"20%",    
-    isBestseller: true,
+    isBestseller: false,
   },
   {
     _id: "0c3f12ae-60ed-4fa9-a968-3210e8ea2399",
@@ -82,11 +82,11 @@ export const products = [
     imgURL:donutPlate,
     categoryName: "Planter",
     offer:"20%",    
-    isBestseller: true,
+    isBestseller: false,
   },
   {
     _id: "319d3e92-47a3-49f3-9c89-d10d0668e5e2",
-    title: "Micheilin Set of 7 Plates",
+    title: "Micheil Set of 7 Plates",
     price: {
       discounted: 1499,
       original: 1999

@@ -1,7 +1,9 @@
 import React from "react";
 import "./auth.css";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export function ForgetPassword() {
+  useDocumentTitle("FOrgot Password");
   return (
     <section className="auth-container">
       <form className="forgot-form p-2p5 pt-1">

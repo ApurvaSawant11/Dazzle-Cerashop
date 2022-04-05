@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import "./productPage.css";
 import { useNavigate, useParams } from "react-router";
 import { useAuth, useCart, useData, useWishlist } from "../../context";
-
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import {
   calcPercentage,
   isProductInCart,
   isProductInWishlist,
 } from "../../utils";
+import { toast } from "react-toastify";
 
 const ProductPage = () => {
+  useDocumentTitle("Product");
+  const RATING_STARS = [1, 2, 3, 4, 5];
   const [productQty, setProductQty] = useState(1);
   const { productId } = useParams();
   const { productsList } = useData();
@@ -31,29 +34,40 @@ const ProductPage = () => {
     token
       ? isInCart
         ? navigate("/cart")
-        : addToCart(cartDispatch, product, token)
+        : addToCart(cartDispatch, product, token, toast)
       : navigate("/login");
   };
 
   const wishlistHandler = () => {
     token
       ? isInWishlist
-        ? removeFromWishlist(product?._id, wishlistDispatch, token)
-        : addToWishlist(wishlistDispatch, product, token)
+        ? removeFromWishlist(product?._id, wishlistDispatch, token, toast)
+        : addToWishlist(wishlistDispatch, product, token, toast)
       : navigate("/login");
   };
   return (
-    <section className="flex-row-center items-start wrap mt-2p5 product-section">
+    <section className="flex-row-center items-start wrap mt-2p5 mb-4 product-section">
       <img src={product?.imgURL} alt={product?.title} />
       <div className="product-form">
         <div className="product-header flex-row-center">
-          <h5 className="text-uppercase pb-0p5">{product?.title}</h5>
+          <h5 className="text-uppercase">{product?.title}</h5>
           <span>
             <i className="fas fa-share-alt fa-lg button-link"></i>
           </span>
         </div>
 
-        <div>
+        <div className="pb-0p5">
+          Rating:{" "}
+          {RATING_STARS.map((star) => (
+            <i
+              className={`rating-icon rating-icon--star fa fa-star fw-500 ${
+                product?.rating >= star ? "fw-900" : ""
+              }`}
+            ></i>
+          ))}
+        </div>
+
+        <div className="flex-row">
           <span className="discountedPrice text-md">
             Rs. {product?.price.discounted}
           </span>
@@ -61,6 +75,7 @@ const ProductPage = () => {
             Rs. {product?.price.original}
           </span>
         </div>
+
         <p className="dark-gray-text text-capitalize border-top-1 pt-2 pb-1">
           Prices are inclusive of taxes. Free shipping on prepaid orders.
         </p>

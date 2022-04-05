@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { giftWrapper, phTag } from "../../assets";
+import { giftWrapper, phTag, RemoveIcon } from "../../assets";
 import { useCart } from "../../context";
 import { getCartTotal } from "../../utils";
 import { CouponModal } from "../../components";
+import { toast } from "react-toastify";
 
 const CartSummary = () => {
   const { cartList, couponDetails, setCouponDetails } = useCart();
@@ -22,7 +23,7 @@ const CartSummary = () => {
 
   return (
     <>
-      <div className="cart-footer m-auto">
+      <div className="cart-footer m-auto mb-4">
         <div className="cart-offers">
           <div className="gift-wrapper flex-row m-2 ml-0">
             <img className="gift-svg" src={giftWrapper} alt="Gift Wrapper" />
@@ -55,13 +56,16 @@ const CartSummary = () => {
                 <div className="coupon-applied flex-row p-0p5">
                   <span className="fw-700">{couponDetails.couponCode}</span>
                   <i
-                    class="fas fa-times danger-text"
-                    onClick={() =>
+                    className="fas fa-times danger-text"
+                    onClick={() => {
                       setCouponDetails({
                         couponCode: "",
                         value: 0,
-                      })
-                    }
+                      });
+                      toast.error("Coupon Removed!", {
+                        icon: <RemoveIcon size="2rem" />,
+                      });
+                    }}
                   ></i>
                 </div>
               )}

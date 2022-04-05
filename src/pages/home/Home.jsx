@@ -4,8 +4,10 @@ import { Carousel, CategoryCard, ProductCard } from "../../components";
 import { useData } from "../../context";
 import { filterByOffers } from "../../utils";
 import axios from "axios";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const Home = () => {
+  useDocumentTitle("Home");
   const { productsList: data } = useData();
   const [categoriesList, setCategoriesList] = useState([]);
 
@@ -31,7 +33,7 @@ const Home = () => {
 
       <section className="mt-2p5 combo-offers">
         <h3 className="text-center p-3">Combo Offers</h3>
-        <div className="grid-container mx-auto">
+        <div className="grid-container mx-auto mb-4">
           {comboOffersList &&
             comboOffersList
               .slice(0, 4)

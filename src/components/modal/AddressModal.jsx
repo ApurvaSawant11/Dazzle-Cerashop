@@ -1,6 +1,7 @@
 import React from "react";
 import "./modal.css";
 import { useAuth, useData } from "../../context";
+import { toast } from "react-toastify";
 
 const AddressModal = ({ addressForm, setAddressForm, setShowModal }) => {
   const { dispatch } = useData();
@@ -14,8 +15,8 @@ const AddressModal = ({ addressForm, setAddressForm, setShowModal }) => {
   const saveAddressHandler = () => {
     setShowModal(false);
     addressForm._id
-      ? updateAddress(dispatch, addressForm, token)
-      : addAddress(dispatch, addressForm, token);
+      ? updateAddress(dispatch, addressForm, token, toast)
+      : addAddress(dispatch, addressForm, token, toast);
   };
 
   return (

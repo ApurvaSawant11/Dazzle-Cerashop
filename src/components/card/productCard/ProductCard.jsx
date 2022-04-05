@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useAuth, useWishlist, useCart } from "../../../context";
 import { isProductInCart, isProductInWishlist } from "../../../utils";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ productDetails }) => {
   const {
@@ -9,12 +10,15 @@ const ProductCard = ({ productDetails }) => {
     title,
     imgURL,
     price: { discounted, original },
-    isBestSeller,
+    isBestseller,
+    rating,
   } = productDetails;
 
   const { wishlist, removeFromWishlist, addToWishlist, wishlistDispatch } =
     useWishlist();
   const { cartList, addToCart, cartDispatch } = useCart();
+
+  const RATING_STARS = [1, 2, 3, 4, 5];
 
   const navigate = useNavigate();
   const { token } = useAuth();
@@ -26,15 +30,15 @@ const ProductCard = ({ productDetails }) => {
     token
       ? isInCart
         ? navigate("/cart")
-        : addToCart(cartDispatch, productDetails, token)
+        : addToCart(cartDispatch, productDetails, token, toast)
       : navigate("/login");
   };
 
   const wishlistHandler = () => {
     token
       ? isInWishlist
-        ? removeFromWishlist(_id, wishlistDispatch, token)
-        : addToWishlist(wishlistDispatch, productDetails, token)
+        ? removeFromWishlist(_id, wishlistDispatch, token, toast)
+        : addToWishlist(wishlistDispatch, productDetails, token, toast)
       : navigate("/login");
   };
 
@@ -46,10 +50,10 @@ const ProductCard = ({ productDetails }) => {
           className="card-img-vertical img-responsive"
           src={imgURL}
           alt={title}
-          onClick={() => navigate(`/${_id}`)}
+          onClick={() => navigate(`/product/${_id}`)}
         />
 
-        {isBestSeller && (
+        {isBestseller && (
           <span className="badge-text badge-on-left success px-0p5">
             Bestseller
           </span>
@@ -66,9 +70,21 @@ const ProductCard = ({ productDetails }) => {
       </div>
       <div
         className="card-details text-center"
-        onClick={() => navigate(`/${_id}`)}
+        onClick={() => navigate(`/product/${_id}`)}
       >
-        <div className="title">{title}</div>
+        <div className="title flex-column-center">
+          <span>{title}</span>
+          <span>
+            {RATING_STARS.map((star, index) => (
+              <i
+                key={index}
+                className={`rating-icon rating-icon--star fa fa-star fw-500 ${
+                  rating >= star ? "fw-900" : ""
+                }`}
+              ></i>
+            ))}
+          </span>
+        </div>
         <div className="card-footer-vertical">
           <span className="discountedPrice">Rs. {discounted}</span>
           <span className="originalPrice pl-0p5">Rs. {original}</span>

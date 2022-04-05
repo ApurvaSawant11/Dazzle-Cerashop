@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import "./auth.css";
-import { authImage } from "../../assets";
+import { authImage, ErrorIcon } from "../../assets";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
+import { toast } from "react-toastify";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export function Signup() {
+  useDocumentTitle("Signup");
   const defaultFormValue = {
     email: "",
     password: "",
@@ -18,17 +21,27 @@ export function Signup() {
 
   const signUpHandler = () => {
     const { email, password, confirmPwd, firstName, lastName } = formData;
-    if (password === confirmPwd) {
-      (async () => {
-        signupUser(email, password, firstName, lastName);
-      })();
+    if (firstName && lastName && email && password) {
+      if (password === confirmPwd)
+        (async () => {
+          signupUser(email, password, firstName, lastName, toast);
+        })();
+      else {
+        toast.error("Passwords do not match", {
+          icon: <ErrorIcon size="2rem" />,
+        });
+      }
+    } else {
+      toast.error("Enter valid information", {
+        icon: <ErrorIcon size="2rem" />,
+      });
     }
   };
 
   const fillFormValue = (event, fieldName) => {
     const regex = "^\\s+$";
     const { value } = event.target;
-    if (!value.match(regex))
+    if (value.match(regex))
       setFormData((form) => ({ ...form, [fieldName]: value }));
   };
 

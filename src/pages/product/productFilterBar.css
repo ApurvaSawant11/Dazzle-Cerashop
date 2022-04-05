@@ -13,6 +13,10 @@
   font-size: small;
   font-weight: 500;
 }
+
+.clear-sort-btn {
+  cursor: pointer;
+}
   
 .short-filter-bar {
   display: flex;
@@ -38,15 +42,16 @@
 .dropdown-content {
   position: absolute;
   right: 0;
-  top: 4rem;
+  top: 3.5rem;
   background: var(--white-color);
   z-index: 2;
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem;
 }
   
 .show-none {
   display: none;
 }
+
   
 /* || Checkbox & Radio */
 

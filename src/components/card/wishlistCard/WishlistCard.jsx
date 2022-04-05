@@ -1,6 +1,8 @@
 import React from "react";
+import { toast } from "react-toastify";
 import { useAuth, useWishlist, useCart } from "../../../context";
 import { isProductInCart } from "../../../utils";
+import { CheckMarkIcon } from "../../../assets";
 
 const WishlistCard = ({ productDetails, cart }) => {
   const { removeFromWishlist, wishlistDispatch } = useWishlist();
@@ -19,7 +21,7 @@ const WishlistCard = ({ productDetails, cart }) => {
   const isInCart = isProductInCart(cart, _id);
 
   const moveToCartHandler = () => {
-    addToCart(cartDispatch, productDetails, token);
+    addToCart(cartDispatch, productDetails, token, toast);
   };
 
   return (
@@ -41,7 +43,9 @@ const WishlistCard = ({ productDetails, cart }) => {
         <span>
           <i
             className="far fa-trash-alt card-delete-icon"
-            onClick={() => removeFromWishlist(_id, wishlistDispatch, token)}
+            onClick={() =>
+              removeFromWishlist(_id, wishlistDispatch, token, toast)
+            }
           ></i>
         </span>
       </div>
@@ -57,9 +61,9 @@ const WishlistCard = ({ productDetails, cart }) => {
         onClick={() =>
           isInCart
             ? (updateCartQuantity(_id, cartDispatch, token, "INC_QTY"),
-              alert(
-                "Product already in Cart. Hence, Increased product quantity by 1"
-              ))
+              toast.success("Increased product quantity", {
+                icon: <CheckMarkIcon size="2rem" />,
+              }))
             : moveToCartHandler()
         }
       >

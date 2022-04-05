@@ -6,6 +6,13 @@
     --card-button-hover: #f0fffb;
     --opacity-50: rgba(0, 0, 0, 0.26);
     --opacity-80: rgba(0, 0, 0, 0.8);
+    --opacity-white: #ffffffb8;
+    /* !important is used to override react toastify colors */
+    --toastify-color-info: var(--info) !important;
+    --toastify-color-success: var(--secondary) !important;
+    --toastify-color-warning: var(--warning) !important;
+    --toastify-color-error: var(--danger) !important;
+    --toastify-text-color-light: var(--primary) !important;
 }
 
 * {
@@ -43,12 +50,53 @@
     border-radius: 0;
 }
 
+.image-container  {
+    height: 80vh;
+}
+
+.not-found-image {
+    background-image: url("./assets/images/empty-page.jpg");
+    width: 100%;
+    object-fit: cover;
+    object-position: 20% 100%;
+}
+
+.not-found-image > div {
+     background: var(--opacity-white);
+}
+
+.empty-page-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 20% 100%;
+}
+
+.empty-page-text {
+    position: absolute;
+    right: 7rem;
+    width: 35%;
+    background: var(--opacity-white);
+    padding: 0.5rem 1rem;  
+}
+
+.empty-page-text h5 {
+    font-size: 3rem;
+}
+
+.mb-4{
+    margin-bottom: 4rem;
+}
 
 /* || Media Queries */
 
 @media screen and (max-width: 1100px) {
     .grid-container {
         grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    }
+
+    .empty-page-text {
+        width: 50%;
     }
 }
 
@@ -71,7 +119,7 @@
     .nav-drawer {
         display: flex;
         flex-direction: column;
-        padding: 0 0 0.5rem 2rem;
+        padding: 0 2rem 0.5rem 2rem;
     }
 
     footer {
@@ -81,6 +129,11 @@
 
     footer h6 {
         font-size: small;
+    }
+
+    .empty-page-text{
+        right: 6rem;
+        width: 70%;
     }
 }
 
@@ -96,6 +149,11 @@
     .grid-container {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         padding: 0.5rem;
+    }
+
+    .empty-page-text {
+        width: 90%;
+        right: 1.5rem;
     }
 }
 

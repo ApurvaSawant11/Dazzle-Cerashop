@@ -3,8 +3,11 @@ import "./profile.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useData, useCart, useWishlist } from "../../context";
 import { AddressModal } from "../../components";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { toast } from "react-toastify";
 
 const Profile = () => {
+  useDocumentTitle("My Profile");
   const { user, setUser, token, setToken, removeAddress } = useAuth();
   const { firstName, lastName, email } = user;
   const { address, dispatch } = useData();
@@ -51,7 +54,7 @@ const Profile = () => {
   };
 
   return (
-    <main className="flex-row-center wrap items-start mt-2p5 pt-2">
+    <main className="flex-row-center wrap items-start mt-2p5 mb-4 pt-2">
       <aside className="profile-aside pr-2 flex-column gap-1">
         <div className="flex-column">
           <p className="heading text-uppercase border-bottom-1 pb-0p5">
@@ -187,7 +190,9 @@ const Profile = () => {
                     </span>
                     <span
                       className="button-link danger-text p-0p5 remove-btn"
-                      onClick={() => removeAddress(dispatch, item._id, token)}
+                      onClick={() =>
+                        removeAddress(dispatch, item._id, token, toast)
+                      }
                     >
                       Remove
                     </span>

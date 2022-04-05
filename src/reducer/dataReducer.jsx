@@ -1,6 +1,6 @@
 const initialReducerData = {
   sortByHighLow: "",
-  priceRange: { min: 0, max: 19999 },
+  priceRange: { min: 0, max: 8000 },
   sliderValue: { left: 0, right: 0 },
   categoriesList: {},
   sortByRating: "",
@@ -44,8 +44,8 @@ const dataReducer = (state, action) => {
         ...state,
         priceRange: action.payload,
         sliderValue: {
-          left: (action.payload.min / 19999) * 100,
-          right: 100 - (action.payload.max / 19999) * 100,
+          left: (action.payload.min / 8000) * 100,
+          right: 100 - (action.payload.max / 8000) * 100,
         },
       };
 
@@ -79,6 +79,12 @@ const dataReducer = (state, action) => {
         search: action.payload,
       };
 
+    case "CLEAR_SORT_HIGH_LOW":
+      return {
+        ...state,
+        sortByHighLow: "",
+      };
+
     case "CLEAR_FILTER":
       for (const cat in state.categoriesList) {
         state.categoriesList[cat] = false;
@@ -87,7 +93,7 @@ const dataReducer = (state, action) => {
         sortByHighLow: "",
         categoriesList: state.categoriesList,
         sortByRating: "",
-        priceRange: { min: 0, max: 19999 },
+        priceRange: { min: 0, max: 8000 },
         sliderValue: { left: 0, right: 0 },
         productsList: action.payload,
         search: "",
