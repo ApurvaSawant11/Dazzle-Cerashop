@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useData } from "../context/data-context";
 import { CheckMarkIcon, ErrorIcon, RemoveIcon } from "../assets";
-import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -15,23 +14,12 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      (async () => {
-        try {
-          const { data: address } = await axios.get("api/user/address", {
-            headers: {
-              authorization: token,
-            },
-          });
-          dispatch({
-            type: "INITIALIZE_ADDRESS",
-            payload: address.address,
-          });
-        } catch (error) {
-          console.error("Error in initialize address context");
-        }
-      })();
+      dispatch({
+        type: "INITIALIZE_ADDRESS",
+        payload: user.address,
+      });
     }
-  }, []);
+  }, [user]);
 
   const loginUser = async (email, password, toast) => {
     if (email && password !== "") {
@@ -94,6 +82,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const addAddress = async (dispatch, address, token, toast) => {
+    console.log("add to address", address);
     try {
       const { data } = await axios.post(
         "api/user/address",

@@ -56,7 +56,7 @@ const CartSummary = () => {
                 <div className="coupon-applied flex-row p-0p5">
                   <span className="fw-700">{couponDetails.couponCode}</span>
                   <i
-                    class="fas fa-times danger-text"
+                    className="fas fa-times danger-text"
                     onClick={() => {
                       setCouponDetails({
                         couponCode: "",

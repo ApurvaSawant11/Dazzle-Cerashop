@@ -150,7 +150,7 @@ const ProductFilterBar = ({ mobileFilter, setMobileFilter }) => {
       </div>
 
       <button
-        class="button primary radius-0 add-filter-btn mt-2"
+        className="button primary radius-0 add-filter-btn mt-2"
         onClick={() => setMobileFilter(false)}
       >
         Add Filters

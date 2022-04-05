@@ -10,6 +10,8 @@ const Header = () => {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
 
+  const navDrawerData = ["Decor", "Dining", "Kitchen", "Gifts", "Brands"];
+
   const { token } = useAuth();
   const { dispatch } = useData();
   const { wishlist } = useWishlist();
@@ -150,7 +152,7 @@ const Header = () => {
       >
         <div className="flex-row-center drawer-header">
           <Link
-            to="/products"
+            to="/"
             className="nav-link"
             onClick={() => setShowNavDrawer(false)}
           >
@@ -164,41 +166,16 @@ const Header = () => {
             Shop All
           </Link>
         </div>
-        <Link
-          to="/products"
-          className="nav-link"
-          onClick={() => setShowNavDrawer(false)}
-        >
-          Decor
-        </Link>
-        <Link
-          to="/products"
-          className="nav-link"
-          onClick={() => setShowNavDrawer(false)}
-        >
-          Dining
-        </Link>
-        <Link
-          to="/products"
-          className="nav-link"
-          onClick={() => setShowNavDrawer(false)}
-        >
-          Kitchen
-        </Link>
-        <Link
-          to="/products"
-          className="nav-link"
-          onClick={() => setShowNavDrawer(false)}
-        >
-          Gifts
-        </Link>
-        <Link
-          to="/products"
-          className="nav-link"
-          onClick={() => setShowNavDrawer(false)}
-        >
-          Brands
-        </Link>
+        {navDrawerData.map((item, index) => (
+          <Link
+            key={index}
+            to="/products"
+            className="nav-link"
+            onClick={() => setShowNavDrawer(false)}
+          >
+            {item}
+          </Link>
+        ))}
         <div className="drawer-footer border-top-1">
           <div className="navbar-icon p-1 pl-0p5">
             {token ? (

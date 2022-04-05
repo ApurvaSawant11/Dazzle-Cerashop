@@ -75,8 +75,9 @@ const ProductCard = ({ productDetails }) => {
         <div className="title flex-column-center">
           <span>{title}</span>
           <span>
-            {RATING_STARS.map((star) => (
+            {RATING_STARS.map((star, index) => (
               <i
+                key={index}
                 className={`rating-icon rating-icon--star fa fa-star fw-500 ${
                   rating >= star ? "fw-900" : ""
                 }`}

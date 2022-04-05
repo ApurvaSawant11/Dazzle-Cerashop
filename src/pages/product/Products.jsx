@@ -48,22 +48,24 @@ const Products = () => {
         <span className="fw-500 text-xs">({sortedData.length} products)</span>
       </h4>
 
-      <div class="short-filter-container">
-        <div class="short-filter-bar border-top-1">
+      <div className="short-filter-container">
+        <div className="short-filter-bar border-top-1">
           <span
-            class="button-link p-1 pl-2p5 border-right-1 filter-btn"
+            className="button-link p-1 pl-2p5 border-right-1 filter-btn"
             onClick={() => setMobileFilter(true)}
           >
-            <i class="fas fa-filter"></i> Filter
+            <i className="fas fa-filter"></i> Filter
           </span>
           <span
-            class="button-link p-1 pr-2p5 border-left-1 sort-btn"
+            className="button-link p-1 pr-2p5 border-left-1 sort-btn"
             onClick={() => setMobileSort(!mobileSort)}
           >
-            <i class="fas fa-sort"></i> Sort
+            <i className="fas fa-sort"></i> Sort
           </span>
           <div
-            class={`dropdown-content border-1 ${mobileSort ? "" : "show-none"}`}
+            className={`dropdown-content border-1 ${
+              mobileSort ? "" : "show-none"
+            }`}
           >
             {SORT_HIGH_LOW.map(({ sortText, sortType }, index) => (
               <label key={index} className="radio-container">
