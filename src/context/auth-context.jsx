@@ -82,7 +82,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const addAddress = async (dispatch, address, token, toast) => {
-    console.log("add to address", address);
     try {
       const { data } = await axios.post(
         "api/user/address",
