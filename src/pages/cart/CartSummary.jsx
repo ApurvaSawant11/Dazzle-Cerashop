@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { giftWrapper, phTag, RemoveIcon } from "../../assets";
-import { useCart } from "../../context";
+import { useCart, useData, useOrder } from "../../context";
 import { getCartTotal } from "../../utils";
 import { CouponModal } from "../../components";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const CartSummary = () => {
   const { cartList, couponDetails, setCouponDetails } = useCart();
+  const { orderDispatch } = useOrder();
+  const { address } = useData();
   const [showModal, setShowModal] = useState(false);
   const { cartTotal, offerDiscount, quantity } = getCartTotal(cartList);
+  const navigate = useNavigate();
 
   const couponDiscount = cartTotal
     ? Math.floor(
@@ -20,6 +24,24 @@ const CartSummary = () => {
     : 0;
   const totalAmt = cartTotal - offerDiscount - couponDiscount;
   const totalDiscount = offerDiscount + couponDiscount;
+
+  const checkoutHandler = () => {
+    orderDispatch({
+      type: "PRICE_DETAILS",
+      payload: {
+        cartTotal,
+        offerDiscount,
+        couponDiscount,
+        totalAmt,
+        totalDiscount,
+      },
+    });
+    orderDispatch({
+      type: "ORDER_ADDRESS",
+      payload: address[0],
+    });
+    navigate("/checkout");
+  };
 
   return (
     <>
@@ -103,7 +125,12 @@ const CartSummary = () => {
             <span>Total Amount: </span>
             <span className="price-detail-value">Rs. {totalAmt}</span>
           </div>
-          <button className="button primary mt-1 checkout-btn">Checkout</button>
+          <button
+            className="button primary mt-1  radius-0 checkout-btn"
+            onClick={() => checkoutHandler()}
+          >
+            Checkout
+          </button>
         </div>
       </div>
       {showModal && <CouponModal setShowModal={setShowModal} />}

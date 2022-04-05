@@ -5,8 +5,8 @@ import { useCart } from "../../context";
 
 const CouponModal = ({ setShowModal }) => {
   const COUPONS = [
-    { couponCode: "SUMMER_50", value: 50 },
-    { couponCode: "FIRST_ORDER", value: 15 },
+    { couponCode: "SUMMER", value: 50 },
+    { couponCode: "BOHO", value: 15 },
   ];
 
   const { couponDetails, setCouponDetails } = useCart();

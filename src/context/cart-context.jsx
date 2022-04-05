@@ -102,12 +102,30 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const clearCart = async (cartDispatch, cartList, token) => {
+    try {
+      for (const item of cartList) {
+        await axios.delete(`api/user/cart/${item._id}`, {
+          headers: {
+            authorization: token,
+          },
+        });
+      }
+      cartDispatch({
+        type: "CLEAR_CART",
+      });
+    } catch (error) {
+      console.error("Error in clearCart Context", error);
+    }
+  };
+
   const value = {
     cartList: state.cartList,
     cartDispatch: cartDispatch,
     addToCart,
     removeFromCart,
     updateCartQuantity,
+    clearCart,
     couponDetails,
     setCouponDetails,
   };

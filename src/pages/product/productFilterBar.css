@@ -34,7 +34,7 @@
 }
   
 .add-filter-btn,
-.fa-x {
+.filter-bar .fa-times {
   display: none;
   width: 100%;
 }
@@ -79,7 +79,7 @@
 }
   
 .add-filter-btn,
-.fa-x {
+.filter-bar .fa-times {
     display: block;
 }
   

@@ -7,3 +7,5 @@ export { Profile } from "./profile/Profile"
 export { Wishlist } from "./wishlist/Wishlist";
 export { Cart } from "./cart/Cart";
 export { NotFound } from "./notFound/NotFound";
+export { Checkout } from "./checkout/Checkout";
+export { OrderSummary } from "./orderSummary/OrderSummary";

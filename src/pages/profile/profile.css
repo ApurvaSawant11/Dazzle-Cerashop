@@ -25,7 +25,7 @@
 .address-title {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 35rem;
 }
 
 .edit-btn,

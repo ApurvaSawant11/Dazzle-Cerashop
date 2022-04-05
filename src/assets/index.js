@@ -27,3 +27,4 @@ export { IoIosRemoveCircle as RemoveIcon } from "react-icons/io";
 export { MdError as ErrorIcon } from "react-icons/md";
 export { RiCoupon3Fill as CouponIcon } from "react-icons/ri";
 export { GiCheckMark as  CheckMarkIcon } from "react-icons/gi";
+export { BsCheckCircle } from "react-icons/bs";

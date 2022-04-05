@@ -2,7 +2,7 @@ import React from "react";
 import "./productFilterBar.css";
 import { useData } from "../../context";
 
-const RATING_STARS = [1, 2, 3, 4];
+const RATING_STARS = [4, 3, 2, 1];
 const SORT_HIGH_LOW = [
   { sortText: "Low to High", sortType: "LOW_TO_HIGH" },
   { sortText: "High to Low", sortType: "HIGH_TO_LOW" },
