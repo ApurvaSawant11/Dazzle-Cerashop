@@ -1,0 +1,16 @@
+
+.address-container {
+    width: 35rem;
+}
+
+.confirm-icon {
+    align-self: center;
+}
+
+@media screen and (max-width: 1048px) {
+    .details-container {
+        border: 1px solid var(--border-color);
+        padding: 1rem;
+        width: 35rem;
+    }
+}

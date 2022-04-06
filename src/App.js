@@ -2,7 +2,7 @@ import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Products, ProductPage, Login, Signup, Profile, Wishlist, Cart, NotFound } from "./pages"
+import { Home, Products, ProductPage, Login, Signup, Profile, Wishlist, Cart, Checkout, NotFound, OrderSummary } from "./pages"
 import { Header, Footer, PrivateRoute } from "./components";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,7 +15,7 @@ const App = () => {
    <Header />
    <ToastContainer
           position="top-right"
-          autoClose="2500"
+          autoClose="2200"
           limit="2"
           style={{ top: "6.5em", right: "1em" }}
           icon={false}
@@ -28,6 +28,8 @@ const App = () => {
       <Route path="/product/:productId" element={<ProductPage />} />
       <Route element={ <PrivateRoute /> } >
          <Route path="/profile" element={ <Profile /> } />
+         <Route path="/checkout" element={ <Checkout /> } />
+         <Route path="/order_summary" element={ <OrderSummary /> } />
       </Route>
       <Route path="/wishlist" element={ <Wishlist />} />
       <Route path="/cart" element={  <Cart /> } />

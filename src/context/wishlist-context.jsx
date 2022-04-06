@@ -18,7 +18,7 @@ const WishlistProvider = ({ children }) => {
       const {
         data: { wishlist },
       } = await axios.post(
-        "api/user/wishlist",
+        "/api/user/wishlist",
         {
           product,
         },
@@ -46,7 +46,7 @@ const WishlistProvider = ({ children }) => {
     try {
       const {
         data: { wishlist },
-      } = await axios.delete(`api/user/wishlist/${_id}`, {
+      } = await axios.delete(`/api/user/wishlist/${_id}`, {
         headers: {
           authorization: token,
         },

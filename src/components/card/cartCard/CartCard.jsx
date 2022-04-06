@@ -24,7 +24,7 @@ const CartCard = ({ productDetails, wishlist, dispatch }) => {
   };
 
   const moveToWishlist = () => {
-    removeFromCart(_id, dispatch, token, toast);
+    removeFromCart(_id, dispatch, token);
     !isInWishlist &&
       addToWishlist(wishlistDispatch, productDetails, token, toast);
   };

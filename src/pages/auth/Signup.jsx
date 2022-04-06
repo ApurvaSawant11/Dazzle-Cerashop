@@ -41,7 +41,7 @@ export function Signup() {
   const fillFormValue = (event, fieldName) => {
     const regex = "^\\s+$";
     const { value } = event.target;
-    if (value.match(regex))
+    if (!value.match(regex))
       setFormData((form) => ({ ...form, [fieldName]: value }));
   };
 

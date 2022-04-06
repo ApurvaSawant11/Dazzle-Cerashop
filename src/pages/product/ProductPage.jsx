@@ -3,11 +3,7 @@ import "./productPage.css";
 import { useNavigate, useParams } from "react-router";
 import { useAuth, useCart, useData, useWishlist } from "../../context";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
-import {
-  calcPercentage,
-  isProductInCart,
-  isProductInWishlist,
-} from "../../utils";
+import { isProductInCart, isProductInWishlist } from "../../utils";
 import { toast } from "react-toastify";
 
 const ProductPage = () => {
@@ -58,8 +54,9 @@ const ProductPage = () => {
 
         <div className="pb-0p5">
           Rating:{" "}
-          {RATING_STARS.map((star) => (
+          {RATING_STARS.map((star, index) => (
             <i
+              key={index}
               className={`rating-icon rating-icon--star fa fa-star fw-500 ${
                 product?.rating >= star ? "fw-900" : ""
               }`}
