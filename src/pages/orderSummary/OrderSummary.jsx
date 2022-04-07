@@ -19,8 +19,8 @@ const OrderSummary = () => {
   } = useOrder();
 
   return paymentId ? (
-    <div className="flex-row-center wrap gap-2 p-2">
-      <section className="address-container content-start">
+    <div className="flex-row content-center wrap gap-2 p-2">
+      <section className="address-container">
         <div className="flex-row border-1 p-1">
           <span className="text-3xl secondary-text confirm-icon">
             <BsCheckCircle />
@@ -87,7 +87,7 @@ const OrderSummary = () => {
             <span className="price-detail-value">Rs. {cartTotal}</span>
           </div>
           <div>
-            <span>Discount: </span>
+            <span>Total Discount: </span>
             <span className="price-detail-value danger-text">
               -Rs. {discount}
             </span>

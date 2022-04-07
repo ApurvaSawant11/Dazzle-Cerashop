@@ -62,9 +62,15 @@ Dazzle Cerashop is an E-commerce website which sells ceramic products.
 - Traverse through different pages to see all the available products
 - Navigate to single product page by clicking on the Product
 
+**Single Product Page**
+
+- Add/Remove product from Wishlist
+- Add product to Cart
+- Share product on Facebook, Whatsapp, etc.
+
 **Wishlist**
 
-- Add/Remove products from Wishlist
+- Remove products from Wishlist
 - Add products to Cart
 
 **Cart**

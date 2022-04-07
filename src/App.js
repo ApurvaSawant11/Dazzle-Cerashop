@@ -15,7 +15,7 @@ const App = () => {
    <Header />
    <ToastContainer
           position="top-right"
-          autoClose="2200"
+          autoClose="1800"
           limit="2"
           style={{ top: "6.5em", right: "1em" }}
           icon={false}

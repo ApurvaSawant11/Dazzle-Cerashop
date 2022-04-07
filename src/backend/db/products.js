@@ -140,8 +140,8 @@ export const products = [
     _id: "3b799232-cde3-4c22-9245-508b15539547",
     title: "Classic Planter",
     price: {
-      discounted: 359,
-      original: 599
+      discounted: 1359,
+      original: 1599
     },
     rating:5,
     imgURL:whiteBrownPlanter,
@@ -179,8 +179,8 @@ export const products = [
     _id: "31d3ae92-47a3-49f3-9c89-d10d4s2d85e2",
     title: "Micheil Set of 1",
     price: {
-      discounted: 1499,
-      original: 1999
+      discounted: 199,
+      original: 300
     },
     rating:2,
     imgURL:comboSet3,
