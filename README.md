@@ -16,7 +16,6 @@ Dazzle Cerashop is an E-commerce website which sells ceramic products.
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Demo](#demo)
 - [Getting Started](#getting-started)
 - [Connect](#connect)
 
@@ -84,10 +83,6 @@ Dazzle Cerashop is an E-commerce website which sells ceramic products.
   - Select address for Delivery
   - Order payment through Razorpay
   - On Successful payment, display Order Summary
-
-## Demo
-
-![Cerashop Demo](/assets/dazzle-cerashop-react_gif.gif)
 
 ## Getting Started
 
