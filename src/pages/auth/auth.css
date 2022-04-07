@@ -70,8 +70,8 @@
     display: block;
 }
 
-.change-pwd-div {
-    display: none;
+.display-block {
+    display: block;
 }
 
 @media screen and (max-width: 680px) {
