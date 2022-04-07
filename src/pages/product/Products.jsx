@@ -4,6 +4,7 @@ import { ProductCard } from "../../components";
 import { ProductFilterBar } from "./ProductFilterBar";
 import { filterByCategory, sortData, searchProduct } from "../../utils";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { Pagination } from "../../components/pagination/Pagination";
 
 const Products = () => {
   useDocumentTitle("Products");
@@ -98,18 +99,18 @@ const Products = () => {
           setMobileFilter={setMobileFilter}
         />
 
-        <div className="grid-container border-left-1 p-2">
-          {sortedData.length > 0 ? (
-            sortedData.map((product) => (
-              <ProductCard key={product._id} productDetails={product} />
-            ))
-          ) : (
-            <h4>
-              Sorry! Could not find any products 😓. Try different set of
-              filters
-            </h4>
-          )}
-        </div>
+        {sortedData.length > 0 ? (
+          <Pagination
+            sortedData={sortedData}
+            ProductCard={ProductCard}
+            pageLimit={3}
+            dataLimit={8}
+          />
+        ) : (
+          <h4>
+            Sorry! Could not find any products 😓. Try different set of filters
+          </h4>
+        )}
       </div>
     </>
   );

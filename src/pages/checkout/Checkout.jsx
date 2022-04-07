@@ -6,10 +6,12 @@ import { CheckoutAddress } from "./CheckoutAddress";
 import { toast } from "react-toastify";
 import { ErrorIcon } from "../../assets";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useScrollToTop } from "../../hooks/useScrollToTop";
 import { getDeliveryDate } from "../../utils";
 
 const Checkout = () => {
   useDocumentTitle("Checkout");
+  useScrollToTop();
   const navigate = useNavigate();
   const {
     token,

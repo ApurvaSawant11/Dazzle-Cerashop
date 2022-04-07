@@ -8,3 +8,4 @@ export { CartCard } from "./card/cartCard/CartCard";
 export { CouponModal } from "./modal/CouponModal";
 export { AddressModal } from "./modal/AddressModal";
 export { PrivateRoute } from "./PrivateRoute";
+export { ShareProductModal } from "./modal/ShareProductModal";

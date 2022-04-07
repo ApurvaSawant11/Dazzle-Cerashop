@@ -1,0 +1,29 @@
+.pagination-container {
+    position: absolute;
+    left: 0;
+    bottom: -3rem;
+    width: 100%;
+}
+  
+.page-button{
+    height: 2rem;
+    width: 2rem;
+    position: relative;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: normal;
+}
+  
+.page-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  
+.page-button.active {
+    border: 1px solid var(--light-black);
+    color: var(--light-black);
+    pointer-events: none;
+    font-weight: bold;
+}

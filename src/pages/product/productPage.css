@@ -18,6 +18,21 @@
     width: 100%;
 }
 
+.share-container.basic-modal {
+    display: flex;
+}
+
+.share-container .modal {
+    max-width: 25rem;
+}
+.modal-header {
+    justify-content: space-between;
+}
+
+.icons-container {
+    justify-content: space-evenly;
+}
+
 /*  || Media Queries */
 
 @media screen and (max-width: 1100px) {

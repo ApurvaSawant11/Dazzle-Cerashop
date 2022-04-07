@@ -4,10 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { authImage } from "../../assets";
 import { toast } from "react-toastify";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useDocumentTitle, useScrollToTop } from "../../hooks";
 
 const Login = () => {
   useDocumentTitle("Login");
+  useScrollToTop();
   const [formData, setFormData] = useState({
     email: "",
     password: "",

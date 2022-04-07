@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import "./productPage.css";
 import { useNavigate, useParams } from "react-router";
 import { useAuth, useCart, useData, useWishlist } from "../../context";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useDocumentTitle, useScrollToTop } from "../../hooks";
 import { isProductInCart, isProductInWishlist } from "../../utils";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
+import { ShareProductModal } from "../../components";
 
 const ProductPage = () => {
   useDocumentTitle("Product");
+  useScrollToTop();
+  const location = useLocation();
+  const completeURL = `https://dazzle-cerashop.vercel.app${location.pathname}`;
+
+  const [showModal, setShowModal] = useState(false);
   const RATING_STARS = [1, 2, 3, 4, 5];
   const [productQty, setProductQty] = useState(1);
   const { productId } = useParams();
@@ -30,7 +37,7 @@ const ProductPage = () => {
     token
       ? isInCart
         ? navigate("/cart")
-        : addToCart(cartDispatch, product, token, toast)
+        : addToCart(cartDispatch, product, token, toast, productQty)
       : navigate("/login");
   };
 
@@ -41,16 +48,20 @@ const ProductPage = () => {
         : addToWishlist(wishlistDispatch, product, token, toast)
       : navigate("/login");
   };
+
   return (
     <section className="flex-row-center items-start wrap mt-2p5 mb-4 product-section">
       <img src={product?.imgURL} alt={product?.title} />
       <div className="product-form">
         <div className="product-header flex-row-center">
           <h5 className="text-uppercase">{product?.title}</h5>
-          <span>
+          <span onClick={() => setShowModal(!showModal)}>
             <i className="fas fa-share-alt fa-lg button-link"></i>
           </span>
         </div>
+        {showModal && (
+          <ShareProductModal url={completeURL} setShowModal={setShowModal} />
+        )}
 
         <div className="pb-0p5">
           Rating:{" "}

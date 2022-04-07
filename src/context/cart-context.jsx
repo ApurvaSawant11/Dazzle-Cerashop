@@ -15,7 +15,13 @@ const CartProvider = ({ children }) => {
     value: 0,
   });
 
-  const addToCart = async (cartDispatch, product, token, toast) => {
+  const addToCart = async (
+    cartDispatch,
+    product,
+    token,
+    toast,
+    quantity = 1
+  ) => {
     try {
       const {
         data: { cart },
@@ -23,6 +29,7 @@ const CartProvider = ({ children }) => {
         "/api/user/cart",
         {
           product,
+          quantity,
         },
         {
           headers: {

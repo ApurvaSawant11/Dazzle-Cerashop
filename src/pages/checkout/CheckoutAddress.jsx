@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useData, useOrder } from "../../context";
 import "./checkout.css";
 
@@ -8,7 +9,12 @@ const CheckoutAddress = () => {
   const { address } = useData();
   return (
     <div className="address-container content-start">
-      <h6 className="mt-0">Select Delivery Address</h6>
+      <div className="address-title items-center pb-1">
+        <h6 className="m-0">Select Delivery Address</h6>
+        <Link to="/profile" className="button inverted-secondary radius-0">
+          Add New Address
+        </Link>
+      </div>
       {address &&
         address.map(
           ({ _id, name, street, city, state, country, zipCode, mobile }) => (

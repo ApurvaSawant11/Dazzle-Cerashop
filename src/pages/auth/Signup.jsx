@@ -5,9 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { toast } from "react-toastify";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useScrollToTop } from "../../hooks";
 
 export function Signup() {
   useDocumentTitle("Signup");
+  useScrollToTop();
   const defaultFormValue = {
     email: "",
     password: "",
