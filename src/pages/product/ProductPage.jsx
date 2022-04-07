@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./productPage.css";
 import { useNavigate, useParams } from "react-router";
 import { useAuth, useCart, useData, useWishlist } from "../../context";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useDocumentTitle, useScrollToTop } from "../../hooks";
 import { isProductInCart, isProductInWishlist } from "../../utils";
 import { toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
@@ -10,6 +10,7 @@ import { ShareProductModal } from "../../components";
 
 const ProductPage = () => {
   useDocumentTitle("Product");
+  useScrollToTop();
   const location = useLocation();
   const completeURL = `https://dazzle-cerashop.vercel.app${location.pathname}`;
 
