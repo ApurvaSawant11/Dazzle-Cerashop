@@ -7,7 +7,7 @@ import { useDocumentTitle, useScrollToTop } from "../../hooks";
 
 const OrderSummary = () => {
   useDocumentTitle("Order Summary");
-  useScrollToTop;
+  useScrollToTop();
   const {
     order: {
       totalAmount,

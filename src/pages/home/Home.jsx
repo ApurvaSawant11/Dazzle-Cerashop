@@ -8,7 +8,7 @@ import { useDocumentTitle, useScrollToTop } from "../../hooks";
 
 const Home = () => {
   useDocumentTitle("Home");
-  useScrollToTop;
+  useScrollToTop();
   const { productsList: data } = useData();
   const [categoriesList, setCategoriesList] = useState([]);
 
