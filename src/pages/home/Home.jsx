@@ -4,10 +4,11 @@ import { Carousel, CategoryCard, ProductCard } from "../../components";
 import { useData } from "../../context";
 import { filterByOffers } from "../../utils";
 import axios from "axios";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useDocumentTitle, useScrollToTop } from "../../hooks";
 
 const Home = () => {
   useDocumentTitle("Home");
+  useScrollToTop;
   const { productsList: data } = useData();
   const [categoriesList, setCategoriesList] = useState([]);
 

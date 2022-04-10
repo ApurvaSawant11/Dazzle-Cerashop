@@ -5,9 +5,11 @@ import { useAuth, useData, useCart, useWishlist } from "../../context";
 import { AddressModal } from "../../components";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import { toast } from "react-toastify";
+import { useScrollToTop } from "../../hooks";
 
 const Profile = () => {
   useDocumentTitle("My Profile");
+  useScrollToTop();
   const { user, setUser, token, setToken, removeAddress } = useAuth();
   const { firstName, lastName, email } = user;
   const { address, dispatch } = useData();

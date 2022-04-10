@@ -4,8 +4,7 @@ import { authImage, ErrorIcon } from "../../assets";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { toast } from "react-toastify";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle";
-import { useScrollToTop } from "../../hooks";
+import { useDocumentTitle, useScrollToTop } from "../../hooks";
 
 export function Signup() {
   useDocumentTitle("Signup");
