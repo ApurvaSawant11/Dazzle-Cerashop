@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./auth.css";
 import { authImage, ErrorIcon } from "../../assets";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context";
 import { toast } from "react-toastify";
 import { useDocumentTitle, useScrollToTop } from "../../hooks";
@@ -19,6 +19,15 @@ export function Signup() {
   const [formData, setFormData] = useState(defaultFormValue);
   const { token, signupUser } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (token) {
+      setTimeout(() => {
+        navigate(location?.state?.from || "/", { replace: true });
+      }, 1000);
+    }
+  }, [token]);
 
   const signUpHandler = () => {
     const { email, password, confirmPwd, firstName, lastName } = formData;

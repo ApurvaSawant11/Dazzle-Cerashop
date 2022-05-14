@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useAuth, useWishlist, useCart } from "../../../context";
 import { isProductInCart, isProductInWishlist } from "../../../utils";
 import { toast } from "react-toastify";
@@ -21,6 +21,7 @@ const ProductCard = ({ productDetails }) => {
   const RATING_STARS = [1, 2, 3, 4, 5];
 
   const navigate = useNavigate();
+  const location = useLocation();
   const { token } = useAuth();
 
   const isInCart = isProductInCart(cartList, _id);
@@ -31,7 +32,7 @@ const ProductCard = ({ productDetails }) => {
       ? isInCart
         ? navigate("/cart")
         : addToCart(cartDispatch, productDetails, token, toast)
-      : navigate("/login");
+      : navigate("/login", { state: { from: location } });
   };
 
   const wishlistHandler = () => {
@@ -39,7 +40,7 @@ const ProductCard = ({ productDetails }) => {
       ? isInWishlist
         ? removeFromWishlist(_id, wishlistDispatch, token, toast)
         : addToWishlist(wishlistDispatch, productDetails, token, toast)
-      : navigate("/login");
+      : navigate("/login", { state: { from: location } });
   };
 
   return (

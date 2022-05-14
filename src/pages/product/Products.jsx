@@ -104,7 +104,6 @@ const Products = () => {
           <Pagination
             sortedData={sortedData}
             ProductCard={ProductCard}
-            pageLimit={3}
             dataLimit={8}
           />
         ) : (

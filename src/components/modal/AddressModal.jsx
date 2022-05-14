@@ -2,6 +2,8 @@ import React from "react";
 import "./modal.css";
 import { useAuth, useData } from "../../context";
 import { toast } from "react-toastify";
+import { ErrorIcon } from "../../assets";
+import { validateAddress } from "../../utils";
 
 const AddressModal = ({ addressForm, setAddressForm, setShowModal }) => {
   const { dispatch } = useData();
@@ -13,10 +15,17 @@ const AddressModal = ({ addressForm, setAddressForm, setShowModal }) => {
   };
 
   const saveAddressHandler = () => {
-    setShowModal(false);
-    addressForm._id
-      ? updateAddress(dispatch, addressForm, token, toast)
-      : addAddress(dispatch, addressForm, token, toast);
+    const result = validateAddress(addressForm);
+    if (result === "valid") {
+      setShowModal(false);
+      addressForm._id
+        ? updateAddress(dispatch, addressForm, token, toast)
+        : addAddress(dispatch, addressForm, token, toast);
+    } else {
+      toast.error(`Please enter valid ${result}`, {
+        icon: <ErrorIcon size="2rem" />,
+      });
+    }
   };
 
   return (

@@ -22,6 +22,10 @@
   width: 20rem;
   height: 20rem;
 }
+
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr))
+}
   
 @media screen and (min-width: 1280px) {
   .combo-offers .grid-container {

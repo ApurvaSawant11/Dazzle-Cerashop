@@ -1,13 +1,17 @@
 import "./pagination.css";
 import React, { useState, useEffect } from "react";
 
-const Pagination = ({ sortedData, ProductCard, pageLimit, dataLimit }) => {
-  const [pages] = useState(Math.round(sortedData.length / dataLimit));
+const Pagination = ({ sortedData, ProductCard, dataLimit }) => {
+  const pages = Math.ceil(sortedData.length / dataLimit);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     window.scrollTo({ behavior: "smooth", top: "0px" });
   }, [currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortedData]);
 
   const changePage = (event) => {
     const pageNumber = Number(event.target.textContent);
@@ -21,8 +25,7 @@ const Pagination = ({ sortedData, ProductCard, pageLimit, dataLimit }) => {
   };
 
   const getPageNumbersGroup = () => {
-    const start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
-    return new Array(pageLimit).fill().map((_, index) => start + index + 1);
+    return new Array(pages).fill().map((_, index) => index + 1);
   };
 
   return (

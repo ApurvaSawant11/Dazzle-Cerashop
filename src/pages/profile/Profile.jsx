@@ -170,14 +170,6 @@ const Profile = () => {
                     <span className="display-block pt-0p5 pb-1">
                       Mobile: {item.mobile}
                     </span>
-                    <label htmlFor="default-address">
-                      <input
-                        id="default-address"
-                        className="checkbox-field"
-                        type="checkbox"
-                      />{" "}
-                      Default Address
-                    </label>
                   </p>
 
                   <div className="action-buttons border-top-1">

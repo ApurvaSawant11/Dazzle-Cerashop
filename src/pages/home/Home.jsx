@@ -34,7 +34,7 @@ const Home = () => {
 
       <section className="mt-2p5 combo-offers">
         <h3 className="text-center p-3">Combo Offers</h3>
-        <div className="grid-container mx-auto mb-4">
+        <div className="grid-container grid-auto-fit mx-auto mb-4">
           {comboOffersList &&
             comboOffersList
               .slice(0, 4)
