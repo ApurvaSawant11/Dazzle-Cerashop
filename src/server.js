@@ -27,7 +27,7 @@ import {
   addItemToWishlistHandler,
   getWishlistItemsHandler,
   removeItemFromWishlistHandler,
-} from "./backend/controllers/WishlistController";  
+} from "./backend/controllers/WishlistController";
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
@@ -57,18 +57,24 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [], address: [
-          {
-            _id: uuid(),
-            name: "Apurva Sawant",
-            street: "Shop No. 3 and 4, Sohrab Hall, Opp. Jehangir Hospital, Mahatma Gandhi Rd, Camp",
-            city: "Pune",
-            state: "Maharashtra",
-            country: "India",
-            zipCode: "411001",
-            mobile: "98009800989",
-          },
-        ], })
+        server.create("user", {
+          ...item,
+          cart: [],
+          wishlist: [],
+          address: [
+            {
+              _id: uuid(),
+              name: "Apurva Sawant",
+              street:
+                "Shop No. 3 and 4, Sohrab Hall, Opp. Jehangir Hospital, Mahatma Gandhi Rd, Camp",
+              city: "Pune",
+              state: "Maharashtra",
+              country: "India",
+              zipCode: "411001",
+              mobile: "9800980098",
+            },
+          ],
+        })
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
