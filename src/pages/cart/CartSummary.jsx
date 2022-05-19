@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { giftWrapper, phTag, RemoveIcon } from "../../assets";
+import { giftWrapper, phTag, RemoveIcon, ErrorIcon } from "../../assets";
 import { useCart, useData, useOrder } from "../../context";
 import { getCartTotal } from "../../utils";
 import { CouponModal } from "../../components";
@@ -11,6 +11,7 @@ const CartSummary = () => {
   const { orderDispatch } = useOrder();
   const { address } = useData();
   const [showModal, setShowModal] = useState(false);
+  const [giftWrap, setGiftWrap] = useState(false);
   const { cartTotal, offerDiscount, quantity } = getCartTotal(cartList);
   const navigate = useNavigate();
 
@@ -22,25 +23,32 @@ const CartSummary = () => {
         )
       )
     : 0;
-  const totalAmt = cartTotal - offerDiscount - couponDiscount;
+  const totalAmt =
+    cartTotal - offerDiscount - couponDiscount + (giftWrap ? 30 : 0);
   const totalDiscount = offerDiscount + couponDiscount;
 
   const checkoutHandler = () => {
-    orderDispatch({
-      type: "PRICE_DETAILS",
-      payload: {
-        cartTotal,
-        offerDiscount,
-        couponDiscount,
-        totalAmt,
-        totalDiscount,
-      },
-    });
-    orderDispatch({
-      type: "ORDER_ADDRESS",
-      payload: address[0],
-    });
-    navigate("/checkout");
+    if (address.length > 0) {
+      orderDispatch({
+        type: "PRICE_DETAILS",
+        payload: {
+          cartTotal,
+          offerDiscount,
+          couponDiscount,
+          totalAmt,
+          totalDiscount,
+        },
+      });
+      orderDispatch({
+        type: "ORDER_ADDRESS",
+        payload: address[0],
+      });
+      navigate("/checkout", { state: { isGiftWrap: giftWrap } });
+    } else {
+      toast.error("Please check order address", {
+        icon: <ErrorIcon size="2rem" />,
+      });
+    }
   };
 
   return (
@@ -51,8 +59,11 @@ const CartSummary = () => {
             <img className="gift-svg" src={giftWrapper} alt="Gift Wrapper" />
             <div className="pl-1">
               <div>Want to gift your loved ones?(Rs.30)</div>
-              <button className="plain-button secondary-text display-block">
-                Add Gift Wrap
+              <button
+                className="plain-button secondary-text display-block"
+                onClick={() => setGiftWrap(!giftWrap)}
+              >
+                {giftWrap ? "Remove Gift Wrap" : "Add Gift Wrap"}
               </button>
             </div>
           </div>
@@ -115,6 +126,12 @@ const CartSummary = () => {
             <span>Total Quantity: </span>
             <span className="price-detail-value">{quantity}</span>
           </div>
+          {giftWrap && (
+            <div>
+              <span>Gift Wrap: </span>
+              <span className="price-detail-value">Rs. 30</span>
+            </div>
+          )}
           <div>
             <span>Convenience Fee:</span>
             <span className="price-detail-value secondary-text fw-700">

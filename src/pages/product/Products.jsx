@@ -3,11 +3,12 @@ import { useData } from "../../context";
 import { ProductCard } from "../../components";
 import { ProductFilterBar } from "./ProductFilterBar";
 import { filterByCategory, sortData, searchProduct } from "../../utils";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useDocumentTitle, useScrollToTop } from "../../hooks";
 import { Pagination } from "../../components/pagination/Pagination";
 
 const Products = () => {
   useDocumentTitle("Products");
+  useScrollToTop();
   const [mobileFilter, setMobileFilter] = useState(false);
   const [mobileSort, setMobileSort] = useState(false);
   const SORT_HIGH_LOW = [
@@ -103,7 +104,6 @@ const Products = () => {
           <Pagination
             sortedData={sortedData}
             ProductCard={ProductCard}
-            pageLimit={3}
             dataLimit={8}
           />
         ) : (

@@ -32,11 +32,11 @@ const ShareProductModal = ({ url, setShowModal }) => {
         </div>
         <div className="icons-container flex-row-center wrap  pt-1">
           <FacebookShareButton url={url} quote={title} hashtag={hashtags}>
-            <FacebookIcon size={48} round />
+            <FacebookIcon size={48} round onClick={() => setShowModal(false)} />
           </FacebookShareButton>
 
           <WhatsappShareButton url={url} title={title} hashtag={hashtags}>
-            <WhatsappIcon size={48} round />
+            <WhatsappIcon size={48} round onClick={() => setShowModal(false)} />
           </WhatsappShareButton>
 
           <TwitterShareButton
@@ -45,7 +45,7 @@ const ShareProductModal = ({ url, setShowModal }) => {
             via={"apurvasawant11"}
             hashtags={hashtags}
           >
-            <TwitterIcon size={48} round />
+            <TwitterIcon size={48} round onClick={() => setShowModal(false)} />
           </TwitterShareButton>
 
           <EmailShareButton
@@ -53,11 +53,11 @@ const ShareProductModal = ({ url, setShowModal }) => {
             subject={"Save Everytime you shop"}
             body={title}
           >
-            <EmailIcon size={48} round />
+            <EmailIcon size={48} round onClick={() => setShowModal(false)} />
           </EmailShareButton>
 
           <TelegramShareButton url={url} title={title}>
-            <TelegramIcon size={48} round />
+            <TelegramIcon size={48} round onClick={() => setShowModal(false)} />
           </TelegramShareButton>
 
           <LinkedinShareButton
@@ -68,7 +68,7 @@ const ShareProductModal = ({ url, setShowModal }) => {
             }
             source={"Dazzle Cerashop"}
           >
-            <LinkedinIcon size={48} round />
+            <LinkedinIcon size={48} round onClick={() => setShowModal(false)} />
           </LinkedinShareButton>
         </div>
       </div>

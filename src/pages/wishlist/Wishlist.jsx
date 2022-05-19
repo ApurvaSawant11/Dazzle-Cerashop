@@ -4,9 +4,11 @@ import { WishlistCard } from "../../components";
 import { useCart, useWishlist } from "../../context";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import { emptyWishlist } from "../../assets";
+import { useScrollToTop } from "../../hooks";
 
 const Wishlist = () => {
   useDocumentTitle("My Wishlist");
+  useScrollToTop();
   const { wishlist, wishlistDispatch } = useWishlist();
   const { cartList } = useCart();
 

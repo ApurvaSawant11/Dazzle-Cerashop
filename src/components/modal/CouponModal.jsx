@@ -17,8 +17,8 @@ const CouponModal = ({ setShowModal }) => {
       <div className="modal border-2 mx-auto m-1p5">
         <h6 className="text-center">Applicable Coupons</h6>
         <div className="modal-body p-2 pb-1">
-          {COUPONS.map(({ couponCode, value }) => (
-            <div className="coupon-option">
+          {COUPONS.map(({ couponCode, value }, index) => (
+            <div key={index} className="coupon-option">
               <label className="radio-container">
                 <input
                   type="radio"

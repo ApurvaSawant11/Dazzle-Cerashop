@@ -41,7 +41,12 @@ const AuthProvider = ({ children }) => {
 
           localStorage.setItem("user", JSON.stringify({ user: foundUser }));
 
-          setUser({ ...user, ...foundUser });
+          setUser(foundUser);
+
+          dispatch({
+            type: "INITIALIZE_ADDRESS",
+            payload: foundUser.address,
+          });
 
           toast.success(`Welcome to Cerashop! 😄`);
         }

@@ -4,11 +4,12 @@ import { CartSummary } from "./CartSummary";
 import { Link } from "react-router-dom";
 import { CartCard } from "../../components";
 import { useCart, useWishlist } from "../../context";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useDocumentTitle, useScrollToTop } from "../../hooks";
 import { emptyCart } from "../../assets";
 
 const Cart = () => {
   useDocumentTitle("My Cart");
+  useScrollToTop();
   const { cartList, cartDispatch } = useCart();
   const { wishlist } = useWishlist();
 

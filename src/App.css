@@ -24,7 +24,7 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     align-items: center;
     justify-content: center;
     grid-gap: 1rem;
@@ -92,7 +92,7 @@
 
 @media screen and (max-width: 1100px) {
     .grid-container {
-        grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
     }
 
     .empty-page-text {
@@ -147,7 +147,7 @@
 
 @media screen and (max-width: 500px) {
     .grid-container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         padding: 0.5rem;
     }
 

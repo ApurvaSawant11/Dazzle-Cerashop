@@ -38,7 +38,7 @@ const ProductPage = () => {
       ? isInCart
         ? navigate("/cart")
         : addToCart(cartDispatch, product, token, toast, productQty)
-      : navigate("/login");
+      : navigate("/login", { state: { from: location } });
   };
 
   const wishlistHandler = () => {
@@ -46,7 +46,7 @@ const ProductPage = () => {
       ? isInWishlist
         ? removeFromWishlist(product?._id, wishlistDispatch, token, toast)
         : addToWishlist(wishlistDispatch, product, token, toast)
-      : navigate("/login");
+      : navigate("/login", { state: { from: location } });
   };
 
   return (

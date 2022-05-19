@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./auth.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context";
 import { authImage } from "../../assets";
 import { toast } from "react-toastify";
@@ -14,13 +14,16 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
+  const location = useLocation();
   const { token, loginUser } = useAuth();
 
-  if (token) {
-    setTimeout(() => {
-      navigate("/products");
-    }, 500);
-  }
+  useEffect(() => {
+    if (token) {
+      setTimeout(() => {
+        navigate(location?.state?.from || "/products", { replace: true });
+      }, 1000);
+    }
+  }, [token]);
 
   const loginHandler = () => {
     loginUser(formData.email, formData.password, toast);

@@ -5,9 +5,11 @@ import { useAuth, useData, useCart, useWishlist } from "../../context";
 import { AddressModal } from "../../components";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import { toast } from "react-toastify";
+import { useScrollToTop } from "../../hooks";
 
 const Profile = () => {
   useDocumentTitle("My Profile");
+  useScrollToTop();
   const { user, setUser, token, setToken, removeAddress } = useAuth();
   const { firstName, lastName, email } = user;
   const { address, dispatch } = useData();
@@ -168,14 +170,6 @@ const Profile = () => {
                     <span className="display-block pt-0p5 pb-1">
                       Mobile: {item.mobile}
                     </span>
-                    <label htmlFor="default-address">
-                      <input
-                        id="default-address"
-                        className="checkbox-field"
-                        type="checkbox"
-                      />{" "}
-                      Default Address
-                    </label>
                   </p>
 
                   <div className="action-buttons border-top-1">

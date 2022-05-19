@@ -1,18 +1,18 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuth, useCart, useOrder, useData } from "../../context";
 import "./checkout.css";
 import { CheckoutAddress } from "./CheckoutAddress";
 import { toast } from "react-toastify";
 import { ErrorIcon } from "../../assets";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle";
-import { useScrollToTop } from "../../hooks/useScrollToTop";
+import { useDocumentTitle, useScrollToTop } from "../../hooks";
 import { getDeliveryDate } from "../../utils";
 
 const Checkout = () => {
   useDocumentTitle("Checkout");
   useScrollToTop();
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     token,
     user: { firstName, lastName, email },
@@ -67,7 +67,9 @@ const Checkout = () => {
         setOrder({ ...orderData });
         clearCart(cartDispatch, cartList, token);
         orderDispatch({ type: "RESET_PRICE" });
-        navigate("/order_summary");
+        navigate("/order_summary", {
+          state: { isGiftWrap: location?.state?.isGiftWrap },
+        });
       },
 
       prefill: {
@@ -137,6 +139,12 @@ const Checkout = () => {
               -Rs. {couponDiscount}
             </span>
           </div>
+          {location?.state?.isGiftWrap && (
+            <div>
+              <span>Gift Wrap: </span>
+              <span className="price-detail-value">Rs. 30</span>
+            </div>
+          )}
           <div className="mb-0p5">
             <span>Convenience Fee:</span>
             <span className="price-detail-value secondary-text fw-700">
