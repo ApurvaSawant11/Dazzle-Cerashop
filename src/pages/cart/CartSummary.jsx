@@ -10,7 +10,6 @@ const CartSummary = () => {
   const { cartList, couponDetails, setCouponDetails } = useCart();
   const { orderDispatch } = useOrder();
   const { address } = useData();
-  console.log(address);
   const [showModal, setShowModal] = useState(false);
   const [giftWrap, setGiftWrap] = useState(false);
   const { cartTotal, offerDiscount, quantity } = getCartTotal(cartList);
