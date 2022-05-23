@@ -18,19 +18,23 @@
 
 .profile-section,
 .address-section .card-horizontal {
-    min-width: 35rem;
+    min-width: 100%;
+}
+
+.user-address{
+    width: min(90vw, 35rem)
 }
 
 .action-buttons,
 .address-title {
     display: flex;
     justify-content: space-between;
-    width: 35rem;
+    width: 100%;
 }
 
 .edit-btn,
 .remove-btn {
-    width: 50%;
+    flex-basis: 100%;
     text-align: center;
 }
 
@@ -72,10 +76,6 @@ aside input[type="radio"]{
     .profile-section {
         min-width: 20rem;
         padding: 1rem;
-    }
-
-    .address-section .card-horizontal {
-        min-width: 20rem;
     }
 
     .address-title>h6 {

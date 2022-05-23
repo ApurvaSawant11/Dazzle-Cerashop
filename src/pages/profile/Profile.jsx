@@ -141,7 +141,7 @@ const Profile = () => {
               : "address-section"
           }
         >
-          <div className="flex-column items-center gap-2">
+          <div className="user-address flex-column items-center gap-2">
             <div className="address-title items-center">
               <h6 className="m-0">Saved Addresses</h6>
               <button
