@@ -9,7 +9,6 @@ import { useLocation } from "react-router-dom";
 import { ShareProductModal } from "../../components";
 
 const ProductPage = () => {
-  useDocumentTitle("Product");
   useScrollToTop();
   const location = useLocation();
   const completeURL = `https://dazzle-cerashop.vercel.app${location.pathname}`;
@@ -29,6 +28,8 @@ const ProductPage = () => {
   const product = productsList?.find((product) => {
     return product._id === productId;
   });
+
+  useDocumentTitle(`${product?.title}`);
 
   const isInCart = isProductInCart(cartList, product?._id);
   const isInWishlist = isProductInWishlist(wishlist, product?._id);
@@ -76,10 +77,10 @@ const ProductPage = () => {
         </div>
 
         <div className="flex-row">
-          <span className="discountedPrice text-md">
+          <span className="discounted-price text-md">
             Rs. {product?.price.discounted}
           </span>
-          <span className="originalPrice pl-0p5">
+          <span className="original-price pl-0p5">
             Rs. {product?.price.original}
           </span>
         </div>

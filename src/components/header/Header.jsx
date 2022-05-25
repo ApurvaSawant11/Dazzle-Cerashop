@@ -5,7 +5,6 @@ import { logo } from "../../assets";
 import { useAuth, useWishlist, useCart, useData } from "../../context";
 
 const Header = () => {
-  const [showInput, setShowInput] = useState(false);
   const [showNavDrawer, setShowNavDrawer] = useState(false);
   const [input, setInput] = useState("");
   const navigate = useNavigate();
@@ -17,14 +16,13 @@ const Header = () => {
   const { wishlist } = useWishlist();
   const { cartList } = useCart();
 
-  const searchHandler = (e) => {
-    if (e.key === "Enter" || e.target.value === "" || e.type === "click")
-      dispatch({
-        type: "SEARCH",
-        payload: e.type === "click" ? input : e.target.value,
-      });
+  useEffect(() => {
+    dispatch({
+      type: "SEARCH",
+      payload: input,
+    });
     navigate("/products");
-  };
+  }, [input]);
 
   useEffect(() => {
     setInput("");
@@ -64,13 +62,21 @@ const Header = () => {
         </div>
 
         <div className="navbar-section">
-          <div
-            className="navbar-icon-link flex-column-center"
-            onClick={() => setShowInput(!showInput)}
-          >
-            <i className="fa fa-search navbar-search-icon"></i>
-          </div>
-
+          <form className="navbar-searchbar radius-0">
+            <input
+              className="search-input"
+              placeholder="Search..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <i className="fa fa-search searchbar-search-icon"></i>
+            <i
+              className="fas fa-times searchbar-close-icon"
+              onClick={() => {
+                setInput("");
+              }}
+            ></i>
+          </form>
           <div className="navbar-icon">
             {token ? (
               <Link
@@ -117,33 +123,25 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </header>
-
-      {showInput && (
         <form
-          className="navbar-searchbar radius-0"
+          className="mobile-searchbar navbar-searchbar radius-0"
           onSubmit={(e) => e.preventDefault()}
         >
           <input
             className="search-input"
             placeholder="What are you looking for?"
             value={input}
-            onKeyDown={(e) => searchHandler(e)}
             onChange={(e) => setInput(e.target.value)}
           />
-          <i
-            className="fa fa-search searchbar-search-icon"
-            onClick={(e) => searchHandler(e)}
-          ></i>
+          <i className="fa fa-search searchbar-search-icon"></i>
           <i
             className="fas fa-times searchbar-close-icon"
             onClick={() => {
-              setShowInput(!showInput);
               setInput("");
             }}
           ></i>
         </form>
-      )}
+      </header>
 
       <nav
         className={

@@ -45,7 +45,7 @@ const Products = () => {
 
   return (
     <>
-      <h4 className="text-center text-uppercase p-1">
+      <h4 className="product-title text-center text-uppercase p-1">
         Products
         <span className="fw-500 text-xs">({sortedData.length} products)</span>
       </h4>

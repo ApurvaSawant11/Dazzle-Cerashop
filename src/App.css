@@ -102,10 +102,15 @@
 
 
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 860px) {
 
     .myhamburger {
         display: block;
+        margin-left: 1rem;
+    }
+
+    .product-title {
+        padding: 0;
     }
 
     .drawer-header {

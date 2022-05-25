@@ -7,7 +7,6 @@
 header {
     border-bottom: 2px solid var(--light-gray);
     padding: 1rem 2rem;
-    height: 5rem;
 }
 
 .header-section {
@@ -21,9 +20,13 @@ header {
     border: unset;
     font-size: 1rem;
     padding: 0.5rem;
-    padding-left: 4rem;
+    padding-left: 3rem;
     width: 100%;
     outline: none;
+}
+
+.searchbar-search-icon {
+    left: 0.8rem;
 }
 
 .icon-badge {
@@ -56,4 +59,39 @@ nav {
 
 .nav-link:hover {
     background: var(--light-gray);
+}
+
+.mobile-searchbar{
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 980px){
+    .navbar-logo {
+        font-size: 1.1rem;
+    }
+    .navbar-link {
+    margin-left: 1rem;
+    font-size: small;
+}
+    .navbar-icon-link {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+}
+
+
+@media screen and (max-width: 860px) {
+    .mobile-searchbar.navbar-searchbar{
+        display: flex;
+    }
+
+    .navbar-searchbar{
+        display: none;
+    }
+
+    nav{
+        top: 7.9rem
+    }
 }

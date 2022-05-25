@@ -72,7 +72,7 @@ const ProductFilterBar = ({ mobileFilter, setMobileFilter }) => {
             type="range"
             className="range"
             min="0"
-            max="8000"
+            max="5000"
             value={priceRange.min}
             onChange={(e) => onPriceChangeHandler("min", e.target.value, e)}
           />
@@ -80,7 +80,7 @@ const ProductFilterBar = ({ mobileFilter, setMobileFilter }) => {
             type="range"
             className="range"
             min="0"
-            max="8000"
+            max="5000"
             value={priceRange.max}
             onChange={(e) => onPriceChangeHandler("max", e.target.value, e)}
           />

@@ -38,7 +38,7 @@ const CartCard = ({ productDetails, wishlist, dispatch }) => {
             <div className="title">{title}</div>
             <div className="fw-700">
               Rs. {discounted}{" "}
-              <span className="originalPrice fw-500">Rs. {original}</span> (
+              <span className="original-price fw-500">Rs. {original}</span> (
               {calcPercentage(discounted, original)}% OFF)
             </div>
 

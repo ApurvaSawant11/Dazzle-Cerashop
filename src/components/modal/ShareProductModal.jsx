@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -15,11 +16,24 @@ import {
   TelegramIcon,
   EmailIcon,
 } from "react-share";
+import { toast } from "react-toastify";
+import { CopyIcon } from "../../assets";
 
 const ShareProductModal = ({ url, setShowModal }) => {
   const title =
     "Shop amazing products at up to 70% OFF. Check out this product that I liked!";
   const hashtags = ["ecommerce", "neogcamp", "ceramic"];
+
+  const { productId } = useParams();
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(
+      `https://dazzle-cerashop.vercel.app/product/${productId}`
+    );
+    toast.success("Link copied to Clipboard", {
+      icon: <CopyIcon size="2rem" />,
+    });
+  };
 
   return (
     <div className="share-container basic-modal show flex-row-center">
@@ -31,6 +45,9 @@ const ShareProductModal = ({ url, setShowModal }) => {
           </span>
         </div>
         <div className="icons-container flex-row-center wrap  pt-1">
+          <span className="copy-icon">
+            <CopyIcon onClick={copyLink} size={26} />
+          </span>
           <FacebookShareButton url={url} quote={title} hashtag={hashtags}>
             <FacebookIcon size={48} round onClick={() => setShowModal(false)} />
           </FacebookShareButton>

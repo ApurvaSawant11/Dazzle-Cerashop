@@ -10,3 +10,12 @@
     padding: 3rem;
     max-width: 30rem;
 }
+
+.copy-icon{
+    background: var(--warning);
+    padding: 1rem;
+    border-radius: 50%;
+    padding: 10px 10px 4px;
+    align-self: flex-start;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 const initialReducerData = {
   sortByHighLow: "",
-  priceRange: { min: 0, max: 8000 },
+  priceRange: { min: 0, max: 5000 },
   sliderValue: { left: 0, right: 0 },
   categoriesList: {},
   sortByRating: "",
@@ -44,8 +44,8 @@ const dataReducer = (state, action) => {
         ...state,
         priceRange: action.payload,
         sliderValue: {
-          left: (action.payload.min / 8000) * 100,
-          right: 100 - (action.payload.max / 8000) * 100,
+          left: (action.payload.min / 5000) * 100,
+          right: 100 - (action.payload.max / 5000) * 100,
         },
       };
 
@@ -93,7 +93,7 @@ const dataReducer = (state, action) => {
         sortByHighLow: "",
         categoriesList: state.categoriesList,
         sortByRating: "",
-        priceRange: { min: 0, max: 8000 },
+        priceRange: { min: 0, max: 5000 },
         sliderValue: { left: 0, right: 0 },
         productsList: action.payload,
         search: "",
