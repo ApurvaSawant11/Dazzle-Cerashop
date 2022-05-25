@@ -80,6 +80,11 @@ nav {
         font-size: 1rem;
         padding: 0 0.5rem;
     }
+    .badge-value {
+        height: 1.2rem;
+        width: 1.2rem;
+        font-size: small;
+    }
 }
 
 

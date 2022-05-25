@@ -14,6 +14,18 @@ const AddressModal = ({ addressForm, setAddressForm, setShowModal }) => {
     setAddressForm((prev) => ({ ...prev, [fieldName]: value }));
   };
 
+  const dummyAddress = () => {
+    setAddressForm({
+      name: "John Parker",
+      street: "82124 Jaskolski Springs",
+      city: "Pune",
+      state: "Maharashtra",
+      country: "India",
+      zipCode: "411002",
+      mobile: "9988774563",
+    });
+  };
+
   const saveAddressHandler = () => {
     const result = validateAddress(addressForm);
     if (result === "valid") {
@@ -35,7 +47,6 @@ const AddressModal = ({ addressForm, setAddressForm, setShowModal }) => {
           className="address-form"
           onSubmit={(e) => {
             e.preventDefault();
-            saveAddressHandler();
           }}
         >
           <h6 className="text-center">ADDRESS</h6>
@@ -127,10 +138,23 @@ const AddressModal = ({ addressForm, setAddressForm, setShowModal }) => {
               <label className="placeholder">Mobile</label>
             </div>
           </div>
-          <div className="text-center">
-            <button type="submit" className="button primary m-1">
+          <div className="flex-row-center">
+            <button
+              type="submit"
+              className="button secondary m-1 basis-full"
+              onClick={saveAddressHandler}
+            >
               Save
             </button>
+            <button
+              type="submit"
+              className="button primary m-1 basis-full whitespace-nowrap"
+              onClick={dummyAddress}
+            >
+              Dummy Address
+            </button>
+          </div>
+          <div className=" flex-row-center">
             <button
               className="button inverted-danger m-1"
               onClick={(e) => setShowModal(false)}

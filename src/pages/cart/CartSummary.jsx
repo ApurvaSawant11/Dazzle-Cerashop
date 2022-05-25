@@ -30,25 +30,21 @@ const CartSummary = () => {
   const checkoutHandler = () => {
     if (address.length > 0) {
       orderDispatch({
-        type: "PRICE_DETAILS",
-        payload: {
-          cartTotal,
-          offerDiscount,
-          couponDiscount,
-          totalAmt,
-          totalDiscount,
-        },
-      });
-      orderDispatch({
         type: "ORDER_ADDRESS",
         payload: address[0],
       });
-      navigate("/checkout", { state: { isGiftWrap: giftWrap } });
-    } else {
-      toast.error("Please check order address", {
-        icon: <ErrorIcon size="2rem" />,
-      });
     }
+    orderDispatch({
+      type: "PRICE_DETAILS",
+      payload: {
+        cartTotal,
+        offerDiscount,
+        couponDiscount,
+        totalAmt,
+        totalDiscount,
+      },
+    });
+    navigate("/checkout", { state: { isGiftWrap: giftWrap } });
   };
 
   return (
@@ -78,6 +74,7 @@ const CartSummary = () => {
                     ? `${couponDetails.couponCode}`
                     : "Coupon Code"
                 }
+                onClick={() => setShowModal(true)}
               />
               <span
                 className="button-link secondary-text ml-0p5 fw-700 coupon-btn"

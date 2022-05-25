@@ -63,7 +63,7 @@ export function makeServer({ environment = "development" } = {}) {
           wishlist: [],
           address: [
             {
-              _id: uuid(),
+              _id: "27d94942-cd9b-4137-a0bd-39296b8a6bd2",
               name: "Apurva Sawant",
               street:
                 "Shop No. 3 and 4, Sohrab Hall, Opp. Jehangir Hospital, Mahatma Gandhi Rd, Camp",

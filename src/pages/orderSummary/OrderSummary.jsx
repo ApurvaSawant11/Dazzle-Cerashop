@@ -40,9 +40,6 @@ const OrderSummary = () => {
           <div className="text-xs">
             We've accepted your order, and we're getting it ready.
           </div>
-          <div>
-            <span className="fw-700">Payment ID: </span> {paymentId}
-          </div>
         </div>
 
         <div className="mt-1 p-1 border-1">

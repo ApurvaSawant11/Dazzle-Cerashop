@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./profile.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth, useData, useCart, useWishlist } from "../../context";
 import { AddressModal } from "../../components";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
@@ -13,11 +13,9 @@ const Profile = () => {
   const { user, setUser, token, setToken, removeAddress } = useAuth();
   const { firstName, lastName, email } = user;
   const { address, dispatch } = useData();
-  const { state: section } = useLocation();
 
   const navigate = useNavigate();
-  const [check, setChecked] = useState(true);
-  const [showSection, setShowSection] = useState(section ?? "profile");
+  const [showSection, setShowSection] = useState("profile");
   const [showModal, setShowModal] = useState(false);
   const { wishlistDispatch } = useWishlist();
   const { cartDispatch } = useCart();
@@ -132,7 +130,7 @@ const Profile = () => {
                 </button>
               </div>
 
-              {address &&
+              {address.length > 0 ? (
                 address.map((item, index) => (
                   <div
                     key={index}
@@ -172,7 +170,10 @@ const Profile = () => {
                       </span>
                     </div>
                   </div>
-                ))}
+                ))
+              ) : (
+                <div>Could not find any saved addresses!</div>
+              )}
             </div>
 
             {showModal && (

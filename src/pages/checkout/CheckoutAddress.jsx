@@ -1,21 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { useData, useOrder } from "../../context";
+import { AddressModal } from "../../components";
 import "./checkout.css";
 
 const CheckoutAddress = () => {
   const { orderAddress, orderDispatch } = useOrder();
 
   const { address } = useData();
+  const formValue = {
+    name: "",
+    street: "",
+    city: "",
+    state: "",
+    country: "",
+    zipCode: "",
+    mobile: "",
+  };
+  const [addressForm, setAddressForm] = useState(formValue);
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="address-container content-start">
       <div className="address-title items-center pb-1">
         <h6 className="m-0">Select Delivery Address</h6>
-        <Link to="/profile" className="button inverted-secondary radius-0">
+        <div
+          className="button inverted-secondary radius-0"
+          onClick={() => setShowModal(true)}
+        >
           Add New Address
-        </Link>
+        </div>
       </div>
-      {address &&
+      {address.length > 0 ? (
         address.map(
           ({ _id, name, street, city, state, country, zipCode, mobile }) => (
             <div key={_id} className="checkout-address border-1 p-1 mb-1">
@@ -56,7 +71,18 @@ const CheckoutAddress = () => {
               </label>
             </div>
           )
-        )}
+        )
+      ) : (
+        <div>There are no addresses. Please add delivery address</div>
+      )}
+
+      {showModal && (
+        <AddressModal
+          addressForm={addressForm}
+          setAddressForm={setAddressForm}
+          setShowModal={setShowModal}
+        />
+      )}
     </div>
   );
 };

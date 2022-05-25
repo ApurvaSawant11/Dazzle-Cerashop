@@ -19,3 +19,11 @@
     align-self: flex-start;
     cursor: pointer;
 }
+
+.whitespace-nowrap{
+    white-space: nowrap;
+}
+
+.basis-full {
+    flex-basis: 100%;
+}

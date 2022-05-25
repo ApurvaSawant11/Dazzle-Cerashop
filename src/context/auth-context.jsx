@@ -125,7 +125,7 @@ const AuthProvider = ({ children }) => {
       toast.error("Address removed", { icon: <RemoveIcon size="2rem" /> });
     } catch (error) {
       console.error("Error in removeAddress context", error);
-      toast.error("Sorry! COuld not remove address", {
+      toast.error("Sorry! Could not remove address", {
         icon: <ErrorIcon size="2rem" />,
       });
     }
