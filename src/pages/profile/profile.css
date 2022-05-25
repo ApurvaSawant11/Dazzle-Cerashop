@@ -1,7 +1,28 @@
-.aside-buttons {
+.profile-container{
+    min-height: 65vh;
+}
+
+.option-bar {
+    border-bottom: 2px solid var(--primary);
+}
+
+.option-button {
     text-transform: capitalize;
     color: var(--dark-gray);
     cursor: pointer;
+    flex-basis: 100%;
+    text-align: center;
+    padding: 8px 0;
+}
+
+.option-button.active{
+    background: var(--light-gray);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.profile-details{
+    width: 100%;
 }
 
 .profile-details tr {
@@ -9,7 +30,7 @@
 }
 
 .profile-details td {
-    width: 10rem;
+    word-break: break-all
 }
 
 .logout-btn {
@@ -21,7 +42,7 @@
     min-width: 100%;
 }
 
-.user-address{
+.user-address, .profile-section{
     width: min(90vw, 35rem)
 }
 
@@ -74,7 +95,6 @@ aside input[type="radio"]{
     }
 
     .profile-section {
-        min-width: 20rem;
         padding: 1rem;
     }
 

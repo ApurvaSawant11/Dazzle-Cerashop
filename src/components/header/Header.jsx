@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import "./header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { logo } from "../../assets";
@@ -9,28 +9,33 @@ const Header = () => {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
 
-  const navDrawerData = ["Decor", "Dining", "Kitchen", "Gifts", "Brands"];
+  const navDrawerData = ["All", "Decor", "Dining", "Kitchen", "Gifts"];
 
   const { token } = useAuth();
-  const { dispatch } = useData();
+  const { categoryGroupName, dispatch } = useData();
   const { wishlist } = useWishlist();
   const { cartList } = useCart();
+  const firstUpdate = useRef(true);
 
   useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    navigate("/products");
     dispatch({
       type: "SEARCH",
       payload: input,
     });
-    navigate("/products");
   }, [input]);
 
   useEffect(() => {
-    setInput("");
-    dispatch({
-      type: "SEARCH",
-      payload: "",
-    });
-  }, [navigate]);
+    dispatch({ type: "CATEGORY_GROUP_NAME", payload: "" });
+  }, []);
+
+  const categoryGroupHandler = (groupName) => {
+    dispatch({ type: "CATEGORY_GROUP_NAME", payload: groupName });
+  };
 
   return (
     <>
@@ -57,7 +62,7 @@ const Header = () => {
             Home
           </Link>
           <Link to="/products" className="navbar-link ml-2">
-            Shop All
+            Shop Now
           </Link>
         </div>
 
@@ -161,15 +166,19 @@ const Header = () => {
             className="nav-link"
             onClick={() => setShowNavDrawer(false)}
           >
-            Shop All
+            Shop Now
           </Link>
         </div>
         {navDrawerData.map((item, index) => (
           <Link
             key={index}
             to="/products"
-            className="nav-link"
-            onClick={() => setShowNavDrawer(false)}
+            className={`nav-link ${
+              item === categoryGroupName ? "active" : ""
+            } `}
+            onClick={() => {
+              categoryGroupHandler(item);
+            }}
           >
             {item}
           </Link>

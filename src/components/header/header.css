@@ -54,10 +54,11 @@ nav {
     font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
-    padding: 1rem;
+    padding: 0.9rem;
+    margin: 0 2px;
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link.active {
     background: var(--light-gray);
 }
 

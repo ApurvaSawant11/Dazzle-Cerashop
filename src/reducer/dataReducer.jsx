@@ -2,6 +2,7 @@ const initialReducerData = {
   sortByHighLow: "",
   priceRange: { min: 0, max: 5000 },
   sliderValue: { left: 0, right: 0 },
+  categoryGroupName: "",
   categoriesList: {},
   sortByRating: "",
   productsList: [],
@@ -70,6 +71,12 @@ const dataReducer = (state, action) => {
         },
       };
 
+    case "CATEGORY_GROUP_NAME":
+      return {
+        ...state,
+        categoryGroupName: action.payload,
+      };
+
     case "ADDRESS":
       return { ...state, address: [...action.payload] };
 
@@ -92,6 +99,7 @@ const dataReducer = (state, action) => {
       return {
         sortByHighLow: "",
         categoriesList: state.categoriesList,
+        categoryGroupName: "",
         sortByRating: "",
         priceRange: { min: 0, max: 5000 },
         sliderValue: { left: 0, right: 0 },

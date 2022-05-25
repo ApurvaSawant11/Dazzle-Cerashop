@@ -90,7 +90,7 @@ const Checkout = () => {
     if (address.length === 0) {
       toast.error("Please add Address");
       setTimeout(() => {
-        navigate("/profile");
+        navigate("/profile", { state: { section: "address-section" } });
       }, 1500);
     } else {
       !orderAddress.name

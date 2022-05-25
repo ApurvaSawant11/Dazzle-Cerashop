@@ -44,6 +44,7 @@ const DataProvider = ({ children }) => {
     sortByRating: state.sortByRating,
     priceRange: state.priceRange,
     sliderValue: state.sliderValue,
+    categoryGroupName: state.categoryGroupName,
     categoriesList: state.categoriesList,
     productsList: state.productsList,
     address: state.address,

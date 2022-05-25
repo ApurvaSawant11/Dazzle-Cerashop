@@ -22,6 +22,7 @@ const WishlistCard = ({ productDetails, cart }) => {
 
   const moveToCartHandler = () => {
     addToCart(cartDispatch, productDetails, token, toast);
+    removeFromWishlist(_id, wishlistDispatch, token);
   };
 
   return (
@@ -52,8 +53,8 @@ const WishlistCard = ({ productDetails, cart }) => {
       <div className="card-details text-center">
         <div className="title">{title}</div>
         <div className="card-footer-vertical">
-          <span className="discounted-price">Rs. {discounted}</span>
-          <span className="original-price pl-0p5">Rs. {original}</span>
+          <span className="discountedPrice">Rs. {discounted}</span>
+          <span className="originalPrice pl-0p5">Rs. {original}</span>
         </div>
       </div>
       <button

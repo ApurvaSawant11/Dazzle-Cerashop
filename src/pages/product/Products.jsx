@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { useData } from "../../context";
 import { Loader, ProductCard } from "../../components";
 import { ProductFilterBar } from "./ProductFilterBar";
-import { filterByCategory, sortData, searchProduct } from "../../utils";
+import {
+  filterByCategory,
+  sortData,
+  searchProduct,
+  filterByCategoryGroup,
+} from "../../utils";
 import { useDocumentTitle, useScrollToTop } from "../../hooks";
 import { Pagination } from "../../components/pagination/Pagination";
 
@@ -18,6 +23,7 @@ const Products = () => {
 
   const {
     isLoaderActive,
+    categoryGroupName,
     categoriesList,
     productsList: data,
     sortByHighLow,
@@ -28,7 +34,14 @@ const Products = () => {
   } = useData();
 
   const searchedData = searchProduct([...data], search);
-  const filteredData = filterByCategory([...searchedData], categoriesList);
+  const filteredCategoryGroup = filterByCategoryGroup(
+    [...searchedData],
+    categoryGroupName
+  );
+  const filteredData = filterByCategory(
+    [...filteredCategoryGroup],
+    categoriesList
+  );
   const sortedData = sortData(
     [...filteredData],
     sortByHighLow,

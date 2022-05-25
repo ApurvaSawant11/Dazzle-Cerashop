@@ -2,6 +2,7 @@ export {
   sortData,
   filterByOffers,
   filterByCategory,
+  filterByCategoryGroup,
   searchProduct,
 } from "./getFilterData";
 export {
