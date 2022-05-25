@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useData } from "../../context";
-import { ProductCard } from "../../components";
+import { Loader, ProductCard } from "../../components";
 import { ProductFilterBar } from "./ProductFilterBar";
 import { filterByCategory, sortData, searchProduct } from "../../utils";
 import { useDocumentTitle, useScrollToTop } from "../../hooks";
@@ -17,6 +17,7 @@ const Products = () => {
   ];
 
   const {
+    isLoaderActive,
     categoriesList,
     productsList: data,
     sortByHighLow,
@@ -100,7 +101,9 @@ const Products = () => {
           setMobileFilter={setMobileFilter}
         />
 
-        {sortedData.length > 0 ? (
+        {isLoaderActive ? (
+          <Loader />
+        ) : sortedData.length > 0 ? (
           <Pagination
             sortedData={sortedData}
             ProductCard={ProductCard}

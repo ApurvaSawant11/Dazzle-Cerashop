@@ -14,6 +14,7 @@ export { default as pots } from "./images/pots.jpg";
 export { default as whiteBrownPlanter } from "./images/white-brown-planter.jpg";
 export { default as whiteGoldPlate } from "./images/white-plate-gold-border.jpg";
 export { default as woodenBowl } from "./images/wooden-bowl.jpg";
+export { default as loader } from "./loader.svg";
 
 export { default as emptyWishlist } from "./images/empty-wishlist.jpg";
 export { default as emptyCart } from "./images/empty-cart.jpg";
