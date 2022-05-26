@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { useData } from "../../context";
-import { ProductCard } from "../../components";
+import { Loader, ProductCard } from "../../components";
 import { ProductFilterBar } from "./ProductFilterBar";
-import { filterByCategory, sortData, searchProduct } from "../../utils";
+import {
+  filterByCategory,
+  sortData,
+  searchProduct,
+  filterByCategoryGroup,
+} from "../../utils";
 import { useDocumentTitle, useScrollToTop } from "../../hooks";
 import { Pagination } from "../../components/pagination/Pagination";
 
@@ -17,6 +22,8 @@ const Products = () => {
   ];
 
   const {
+    isLoaderActive,
+    categoryGroupName,
     categoriesList,
     productsList: data,
     sortByHighLow,
@@ -27,7 +34,14 @@ const Products = () => {
   } = useData();
 
   const searchedData = searchProduct([...data], search);
-  const filteredData = filterByCategory([...searchedData], categoriesList);
+  const filteredCategoryGroup = filterByCategoryGroup(
+    [...searchedData],
+    categoryGroupName
+  );
+  const filteredData = filterByCategory(
+    [...filteredCategoryGroup],
+    categoriesList
+  );
   const sortedData = sortData(
     [...filteredData],
     sortByHighLow,
@@ -45,7 +59,7 @@ const Products = () => {
 
   return (
     <>
-      <h4 className="text-center text-uppercase p-1">
+      <h4 className="product-title text-center text-uppercase p-1">
         Products
         <span className="fw-500 text-xs">({sortedData.length} products)</span>
       </h4>
@@ -100,7 +114,9 @@ const Products = () => {
           setMobileFilter={setMobileFilter}
         />
 
-        {sortedData.length > 0 ? (
+        {isLoaderActive ? (
+          <Loader />
+        ) : sortedData.length > 0 ? (
           <Pagination
             sortedData={sortedData}
             ProductCard={ProductCard}

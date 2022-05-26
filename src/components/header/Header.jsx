@@ -1,38 +1,41 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import "./header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { logo } from "../../assets";
 import { useAuth, useWishlist, useCart, useData } from "../../context";
 
 const Header = () => {
-  const [showInput, setShowInput] = useState(false);
   const [showNavDrawer, setShowNavDrawer] = useState(false);
   const [input, setInput] = useState("");
   const navigate = useNavigate();
 
-  const navDrawerData = ["Decor", "Dining", "Kitchen", "Gifts", "Brands"];
+  const navDrawerData = ["All", "Decor", "Dining", "Kitchen", "Gifts"];
 
   const { token } = useAuth();
-  const { dispatch } = useData();
+  const { categoryGroupName, dispatch } = useData();
   const { wishlist } = useWishlist();
   const { cartList } = useCart();
-
-  const searchHandler = (e) => {
-    if (e.key === "Enter" || e.target.value === "" || e.type === "click")
-      dispatch({
-        type: "SEARCH",
-        payload: e.type === "click" ? input : e.target.value,
-      });
-    navigate("/products");
-  };
+  const firstUpdate = useRef(true);
 
   useEffect(() => {
-    setInput("");
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    navigate("/products");
     dispatch({
       type: "SEARCH",
-      payload: "",
+      payload: input,
     });
-  }, [navigate]);
+  }, [input]);
+
+  useEffect(() => {
+    dispatch({ type: "CATEGORY_GROUP_NAME", payload: "" });
+  }, []);
+
+  const categoryGroupHandler = (groupName) => {
+    dispatch({ type: "CATEGORY_GROUP_NAME", payload: groupName });
+  };
 
   return (
     <>
@@ -59,18 +62,26 @@ const Header = () => {
             Home
           </Link>
           <Link to="/products" className="navbar-link ml-2">
-            Shop All
+            Shop Now
           </Link>
         </div>
 
         <div className="navbar-section">
-          <div
-            className="navbar-icon-link flex-column-center"
-            onClick={() => setShowInput(!showInput)}
-          >
-            <i className="fa fa-search navbar-search-icon"></i>
-          </div>
-
+          <form className="navbar-searchbar radius-0">
+            <input
+              className="search-input"
+              placeholder="Search..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <i className="fa fa-search searchbar-search-icon"></i>
+            <i
+              className="fas fa-times searchbar-close-icon"
+              onClick={() => {
+                setInput("");
+              }}
+            ></i>
+          </form>
           <div className="navbar-icon">
             {token ? (
               <Link
@@ -117,33 +128,25 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </header>
-
-      {showInput && (
         <form
-          className="navbar-searchbar radius-0"
+          className="mobile-searchbar navbar-searchbar radius-0"
           onSubmit={(e) => e.preventDefault()}
         >
           <input
             className="search-input"
             placeholder="What are you looking for?"
             value={input}
-            onKeyDown={(e) => searchHandler(e)}
             onChange={(e) => setInput(e.target.value)}
           />
-          <i
-            className="fa fa-search searchbar-search-icon"
-            onClick={(e) => searchHandler(e)}
-          ></i>
+          <i className="fa fa-search searchbar-search-icon"></i>
           <i
             className="fas fa-times searchbar-close-icon"
             onClick={() => {
-              setShowInput(!showInput);
               setInput("");
             }}
           ></i>
         </form>
-      )}
+      </header>
 
       <nav
         className={
@@ -163,15 +166,19 @@ const Header = () => {
             className="nav-link"
             onClick={() => setShowNavDrawer(false)}
           >
-            Shop All
+            Shop Now
           </Link>
         </div>
         {navDrawerData.map((item, index) => (
           <Link
             key={index}
             to="/products"
-            className="nav-link"
-            onClick={() => setShowNavDrawer(false)}
+            className={`nav-link ${
+              item === categoryGroupName ? "active" : ""
+            } `}
+            onClick={() => {
+              categoryGroupHandler(item);
+            }}
           >
             {item}
           </Link>

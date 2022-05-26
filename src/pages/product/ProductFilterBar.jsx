@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./productFilterBar.css";
 import { useData } from "../../context";
+// import { useEffect } from "react/cjs/react.production.min";
 
 const RATING_STARS = [4, 3, 2, 1];
 const SORT_HIGH_LOW = [
@@ -10,6 +11,7 @@ const SORT_HIGH_LOW = [
 
 const ProductFilterBar = ({ mobileFilter, setMobileFilter }) => {
   const {
+    setIsLoaderActive,
     sortByHighLow,
     priceRange,
     sliderValue,
@@ -18,6 +20,11 @@ const ProductFilterBar = ({ mobileFilter, setMobileFilter }) => {
     categoriesList,
     dispatch,
   } = useData();
+
+  useEffect(() => {
+    setIsLoaderActive(true);
+    setTimeout(() => setIsLoaderActive(false), 1000);
+  }, []);
 
   const changeHandler = (dispatchType, targetValue, e) => {
     dispatch({
@@ -72,7 +79,7 @@ const ProductFilterBar = ({ mobileFilter, setMobileFilter }) => {
             type="range"
             className="range"
             min="0"
-            max="8000"
+            max="5000"
             value={priceRange.min}
             onChange={(e) => onPriceChangeHandler("min", e.target.value, e)}
           />
@@ -80,7 +87,7 @@ const ProductFilterBar = ({ mobileFilter, setMobileFilter }) => {
             type="range"
             className="range"
             min="0"
-            max="8000"
+            max="5000"
             value={priceRange.max}
             onChange={(e) => onPriceChangeHandler("max", e.target.value, e)}
           />

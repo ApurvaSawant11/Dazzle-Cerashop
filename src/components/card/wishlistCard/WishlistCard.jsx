@@ -22,6 +22,7 @@ const WishlistCard = ({ productDetails, cart }) => {
 
   const moveToCartHandler = () => {
     addToCart(cartDispatch, productDetails, token, toast);
+    removeFromWishlist(_id, wishlistDispatch, token);
   };
 
   return (

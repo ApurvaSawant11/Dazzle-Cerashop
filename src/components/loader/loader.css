@@ -1,0 +1,12 @@
+.loader-container{
+    display:flex ;
+    align-items:flex-start;
+    justify-content: center;
+    padding-top: 4rem;
+    width: 100%;
+    height: 100vh;
+}
+
+.loader-img{
+    height: 5rem;
+}

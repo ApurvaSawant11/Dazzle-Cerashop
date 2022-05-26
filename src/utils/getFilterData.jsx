@@ -70,6 +70,22 @@ export const filterByCategory = (productsList, categoriesList) => {
   return flag ? filteredProductsList : productsList;
 };
 
+export const filterByCategoryGroup = (productsList, selectedCategory) => {
+  let filteredProductsList = [];
+  let flag = false;
+  if (selectedCategory !== "All" && selectedCategory !== "") {
+    flag = true;
+    filteredProductsList = unionCategory(
+      filteredProductsList,
+      productsList.filter((product) =>
+        product.categoryGroup.includes(selectedCategory)
+      )
+    );
+  }
+
+  return flag ? filteredProductsList : productsList;
+};
+
 export const filterByOffers = (productsList) => {
   return productsList.filter((item) => item.offer === "combo-offer");
 };

@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useReducer,
+} from "react";
 import { initialReducerData, dataReducer } from "../reducer";
 import axios from "axios";
 
@@ -9,6 +15,7 @@ const DataContext = createContext({
 
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dataReducer, initialReducerData);
+  const [isLoaderActive, setIsLoaderActive] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -31,10 +38,13 @@ const DataProvider = ({ children }) => {
   }, []);
 
   const value = {
+    isLoaderActive,
+    setIsLoaderActive,
     sortByHighLow: state.sortByHighLow,
     sortByRating: state.sortByRating,
     priceRange: state.priceRange,
     sliderValue: state.sliderValue,
+    categoryGroupName: state.categoryGroupName,
     categoriesList: state.categoriesList,
     productsList: state.productsList,
     address: state.address,

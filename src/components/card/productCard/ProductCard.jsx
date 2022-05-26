@@ -87,8 +87,8 @@ const ProductCard = ({ productDetails }) => {
           </span>
         </div>
         <div className="card-footer-vertical">
-          <span className="discountedPrice">Rs. {discounted}</span>
-          <span className="originalPrice pl-0p5">Rs. {original}</span>
+          <span className="discounted-price">Rs. {discounted}</span>
+          <span className="original-price pl-0p5">Rs. {original}</span>
         </div>
       </div>
       <button

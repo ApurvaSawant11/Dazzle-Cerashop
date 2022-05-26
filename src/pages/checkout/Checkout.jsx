@@ -89,9 +89,6 @@ const Checkout = () => {
   const placeOrderHandler = () => {
     if (address.length === 0) {
       toast.error("Please add Address");
-      setTimeout(() => {
-        navigate("/profile");
-      }, 1500);
     } else {
       !orderAddress.name
         ? toast.error("Please select Address")
