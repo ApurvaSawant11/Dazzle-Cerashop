@@ -60,6 +60,7 @@
 .radio-container {
   display: block;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
   
 .checkbox-field,

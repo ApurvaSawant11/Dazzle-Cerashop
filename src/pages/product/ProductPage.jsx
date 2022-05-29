@@ -7,6 +7,7 @@ import { isProductInCart, isProductInWishlist } from "../../utils";
 import { toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
 import { ShareProductModal } from "../../components";
+import { ErrorIcon } from "../../assets";
 
 const ProductPage = () => {
   useScrollToTop();
@@ -88,17 +89,29 @@ const ProductPage = () => {
         <p className="dark-gray-text text-capitalize border-top-1 pt-2 pb-1">
           Prices are inclusive of taxes. Free shipping on prepaid orders.
         </p>
-        <div className="quantity-selector">
+        <div className="quantity-selector ">
           <button
-            className="quantity-btn"
-            onClick={() => productQty > 1 && setProductQty(productQty - 1)}
+            className="quantity-btn "
+            onClick={() => {
+              isInCart
+                ? toast.error("Product already in Cart", {
+                    icon: <ErrorIcon size="2rem" />,
+                  })
+                : productQty > 1 && setProductQty(productQty - 1);
+            }}
           >
             -
           </button>
           <span className="quantity-input">{productQty}</span>
           <button
             className="quantity-btn"
-            onClick={() => setProductQty(productQty + 1)}
+            onClick={() => {
+              isInCart
+                ? toast.error("Product already in Cart", {
+                    icon: <ErrorIcon size="2rem" />,
+                  })
+                : setProductQty(productQty + 1);
+            }}
           >
             +
           </button>

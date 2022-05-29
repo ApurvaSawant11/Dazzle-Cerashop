@@ -46,11 +46,6 @@ const FooterLinks = {
       linkName: "Cart",
       url: "/cart",
     },
-    {
-      id: uuid(),
-      linkName: "Track Order",
-      url: "#",
-    },
   ],
 
   helpLinks: [
