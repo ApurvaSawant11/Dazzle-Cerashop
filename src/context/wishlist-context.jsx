@@ -32,9 +32,10 @@ const WishlistProvider = ({ children }) => {
         type: "SET_WISHLIST",
         payload: wishlist,
       });
-      toast.success("Added to Wishlist", {
-        icon: <HeartIcon className="danger-text" size="2rem" />,
-      });
+      toast &&
+        toast.success("Added to Wishlist", {
+          icon: <HeartIcon className="danger-text" size="2rem" />,
+        });
     } catch (error) {
       console.error("Error in addToWishlist Context", error);
       toast.error("Error adding to Wishlist", {
@@ -55,9 +56,10 @@ const WishlistProvider = ({ children }) => {
         type: "SET_WISHLIST",
         payload: wishlist,
       });
-      toast.warn("Removed from Wishlist", {
-        icon: <RemoveIcon size="2rem" />,
-      });
+      toast &&
+        toast.warn("Removed from Wishlist", {
+          icon: <RemoveIcon size="2rem" />,
+        });
     } catch (error) {
       console.error("Error in removeFromWishlist Context", error);
       toast.error("Error removing the product", {

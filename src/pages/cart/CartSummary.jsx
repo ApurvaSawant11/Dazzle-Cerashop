@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { giftWrapper, phTag, RemoveIcon, ErrorIcon } from "../../assets";
-import { useCart, useData, useOrder } from "../../context";
+import { giftWrapper, phTag, RemoveIcon } from "../../assets";
+import { useCart, useOrder } from "../../context";
 import { getCartTotal } from "../../utils";
 import { CouponModal } from "../../components";
 import { toast } from "react-toastify";
@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 const CartSummary = () => {
   const { cartList, couponDetails, setCouponDetails } = useCart();
   const { orderDispatch } = useOrder();
-  const { address } = useData();
   const [showModal, setShowModal] = useState(false);
   const [giftWrap, setGiftWrap] = useState(false);
   const { cartTotal, offerDiscount, quantity } = getCartTotal(cartList);
@@ -28,12 +27,6 @@ const CartSummary = () => {
   const totalDiscount = offerDiscount + couponDiscount;
 
   const checkoutHandler = () => {
-    if (address.length > 0) {
-      orderDispatch({
-        type: "ORDER_ADDRESS",
-        payload: address[0],
-      });
-    }
     orderDispatch({
       type: "PRICE_DETAILS",
       payload: {

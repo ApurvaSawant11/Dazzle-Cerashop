@@ -3,10 +3,12 @@ import { toast } from "react-toastify";
 import { useAuth, useWishlist, useCart } from "../../../context";
 import { isProductInCart } from "../../../utils";
 import { CheckMarkIcon } from "../../../assets";
+import { useNavigate } from "react-router-dom";
 
 const WishlistCard = ({ productDetails, cart }) => {
   const { removeFromWishlist, wishlistDispatch } = useWishlist();
-  const { addToCart, updateCartQuantity, cartDispatch } = useCart();
+  const { addToCart, cartDispatch } = useCart();
+  const navigate = useNavigate();
 
   const {
     _id,
@@ -21,8 +23,12 @@ const WishlistCard = ({ productDetails, cart }) => {
   const isInCart = isProductInCart(cart, _id);
 
   const moveToCartHandler = () => {
-    addToCart(cartDispatch, productDetails, token, toast);
-    removeFromWishlist(_id, wishlistDispatch, token);
+    if (isInCart) {
+      navigate("/cart");
+    } else {
+      addToCart(cartDispatch, productDetails, token, toast);
+      removeFromWishlist(_id, wishlistDispatch, token);
+    }
   };
 
   return (
@@ -59,16 +65,9 @@ const WishlistCard = ({ productDetails, cart }) => {
       </div>
       <button
         className="plain-button card-button mt-0p5"
-        onClick={() =>
-          isInCart
-            ? (updateCartQuantity(_id, cartDispatch, token, "INC_QTY"),
-              toast.success("Increased product quantity", {
-                icon: <CheckMarkIcon size="2rem" />,
-              }))
-            : moveToCartHandler()
-        }
+        onClick={moveToCartHandler}
       >
-        Add to Cart
+        {isInCart ? "Go to Cart" : "Add to Cart"}
       </button>
     </div>
   );
